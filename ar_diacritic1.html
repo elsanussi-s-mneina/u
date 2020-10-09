@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+  MIT License
+
+Copyright (c) 2020 Elsanussi Mneina
+
+https://github.com/elsanussi-s-mneina
+https://www.linkedin.com/in/elsanussi-mneina-57a8181b5/
+elsanussi.m@outlook.com
+
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+  <title>Basic Arabic Diacritic Remover</title>
+  <script>
+    var EXAMPLE_TEXT = 'شُكْرًا جَزِيْلًا. Thank you very much.\n تُوْجَدْ شَدَّةٌ، وَفَتْحَةٌ عَلَى هَٰذَهِ الوَرَقَةٍ ';
+
+    function removeDiacritics(inputString, keepFathatan)
+    {
+      result = "";
+
+      for (var i = 0; i < inputString.length; i++)
+      {
+        if (inputString[i] === "\u064E")
+        {
+          // ARABIC FATHA
+          // Unicode: U+064E, UTF-8: D9 8E
+        }
+        else if (inputString[i] === "\u0650")
+        {
+          // ARABIC KASRA
+          // Unicode: U+0650, UTF-8: D9 90
+        }
+        else if (inputString[i] === "\u064F")
+        {
+          // ARABIC DAMMA
+          // Unicode: U+064F, UTF-8: D9 8F
+        }
+        else if (inputString[i] === "\u064B" && !keepFathatan)
+        {
+          // ARABIC FATHATAN
+          // Unicode: U+064B, UTF-8: D9 8B
+        }
+        else if (inputString[i] === "\u064D")
+        {
+          // ARABIC KASRATAN
+          // Unicode: U+064D, UTF-8: D9 8D
+        }
+        else if (inputString[i] === "\u064C")
+        {
+          // ARABIC DAMMATAN
+          // Unicode: U+064C, UTF-8: D9 8C
+        }
+        else if (inputString[i] === "\u0651")
+        {
+          // ARABIC SHADDA
+          // Unicode: U+0651, UTF-8: D9 91
+        }
+        else if (inputString[i] === "\u0652")
+        {
+          // ARABIC SUKUN
+          // Unicode: U+0652, UTF-8: D9 92
+        }  
+        else if (inputString[i] === "\u0670")
+        {
+          // ARABIC LETTER SUPERSCRIPT ALEF
+          // Unicode: U+0670, UTF-8: D9 B0
+        }
+        else
+        {
+          result += inputString[i];
+        }
+      }
+
+      return result;
+    }
+
+    function removeDiacriticsEventHandler()
+    {
+      var inputText = document.getElementById('arabicInputTextArea').value;
+      var keepFathatan = document.getElementById('keepFathatanCheckbox').checked;
+      var outputText = removeDiacritics(inputText, keepFathatan);
+      document.getElementById('arabicOutputTextArea').value = outputText;
+    }
+
+    function placeExampleTextEventHandler()
+    {
+      document.getElementById('arabicInputTextArea').value = EXAMPLE_TEXT;
+    }
+
+  </script>
+</head>
+<body>
+  <h1>Basic Arabic Diacritic Remover: الحاذف البسيط للتشكيل</h1>
+  <h2>Input: المعطيات</h2>
+  <p>Paste or type diacritic text in the following text input area: ضع النص بالتشكيل في الصندوق التالي
+  <br>
+    <button onclick="placeExampleTextEventHandler();">Put Example ضِعْ مَثَلًا</button>
+  </p>
+  <textarea id="arabicInputTextArea" rows="4" cols="100"></textarea>
+  
+  <h2>Actions أوامر</h2>
+  <button onclick="removeDiacriticsEventHandler();">Remove Diacritics احذف التشكيل</button>
+  <h3>Options اختيارات</h3>
+  <input type="checkbox" id="keepFathatanCheckbox" checked=true >
+  <label for="keepFathatanCheckbox"> Do not delete fatḥatān diacritic. لا تحذف الفتحتان</label><br>
+
+
+  <h2>Output النتيجة</h2>
+  <textarea id="arabicOutputTextArea" rows="4" cols="100"></textarea>
+
+  <footer><a href="https://github.com/elsanussi-s-mneina/">Elsanussi Mneina made this page. صنع هذه الصفحة السنوسي امنينة </a>
+    <p><a href="https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app">v1.2, (2020-10-09)</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,789 @@
+<!--
+  MIT License
+
+Copyright (c) 2020 Elsanussi S. Mneina
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DVORAK Virtual Keyboard</title>
+  
+  </head>
+  <body>
+    <h1>DVORAK Virtual Keyboard</h1>
+    <p>Type as though you have a DVORAK keyboard set up in the following text area.</p>
+    <p>Click the colored box below then type.</p>
+    <p id="outputText" style="background-color: lightblue; min-height: 40px;;"></p>
+
+    <p id="firstRow">
+      <button id="row0key0" onclick="printToOutputFrom('row0key0');">`</button>
+      <button id="row0key1" onclick="printToOutputFrom('row0key1');">1</button>
+      <button id="row0key2" onclick="printToOutputFrom('row0key2');">2</button>
+      <button id="row0key3" onclick="printToOutputFrom('row0key3');">3</button>
+      <button id="row0key4" onclick="printToOutputFrom('row0key4');">4</button>
+      <button id="row0key5" onclick="printToOutputFrom('row0key5');">5</button>
+      <button id="row0key6" onclick="printToOutputFrom('row0key6');">6</button>
+      <button id="row0key7" onclick="printToOutputFrom('row0key7');">7</button>
+      <button id="row0key8" onclick="printToOutputFrom('row0key8');">8</button>
+      <button id="row0key9" onclick="printToOutputFrom('row0key9');">9</button>
+      <button id="row0key10" onclick="printToOutputFrom('row0key10');">0</button>
+      <button id="row0key11" onclick="printToOutputFrom('row0key11');">[</button>
+      <button id="row0key12" onclick="printToOutputFrom('row0key12');">]</button>
+    </p>
+
+    <p id="secondRow">
+    <button id="row1key0" onclick="printToOutputFrom('row1key0');">'</button>
+    <button id="row1key1" onclick="printToOutputFrom('row1key1');">,</button>
+    <button id="row1key2" onclick="printToOutputFrom('row1key2');">.</button>
+    <button id="row1key3" onclick="printToOutputFrom('row1key3');">p</button>
+    <button id="row1key4" onclick="printToOutputFrom('row1key4');">y</button>
+    <button id="row1key5" onclick="printToOutputFrom('row1key5');">f</button>
+    <button id="row1key6" onclick="printToOutputFrom('row1key6');">g</button>
+    <button id="row1key7" onclick="printToOutputFrom('row1key7');">c</button>
+    <button id="row1key8" onclick="printToOutputFrom('row1key8');">r</button>
+    <button id="row1key9" onclick="printToOutputFrom('row1key9');">l</button>
+    <button id="row1key10" onclick="printToOutputFrom('row1key10');">/</button>
+    <button id="row1key11" onclick="printToOutputFrom('row1key11');">=</button>
+    <button id="row1key12" onclick="printToOutputFrom('row1key12');">\</button>
+    </p>
+
+    <p id="thirdRow">
+      <button id="row2key0" onclick="printToOutputFrom('row2key0');">a</button>
+      <button id="row2key1" onclick="printToOutputFrom('row2key1');">o</button>
+      <button id="row2key2" onclick="printToOutputFrom('row2key2');">e</button>
+      <button id="row2key3" onclick="printToOutputFrom('row2key3');">u</button>
+      <button id="row2key4" onclick="printToOutputFrom('row2key4');">i</button>
+      <button id="row2key5" onclick="printToOutputFrom('row2key5');">d</button>
+      <button id="row2key6" onclick="printToOutputFrom('row2key6');">h</button>
+      <button id="row2key7" onclick="printToOutputFrom('row2key7');">t</button>
+      <button id="row2key8" onclick="printToOutputFrom('row2key8');">n</button>
+      <button id="row2key9" onclick="printToOutputFrom('row2key9');">s</button>
+      <button id="row2key10" onclick="printToOutputFrom('row2key10');">-</button>
+    </p>
+
+    <p id="fourthRow">
+      <button id="row3key0" onclick="printToOutputFrom('row3key0');">;</button>
+      <button id="row3key1" onclick="printToOutputFrom('row3key1');">q</button>
+      <button id="row3key2" onclick="printToOutputFrom('row3key2');">j</button>
+      <button id="row3key3" onclick="printToOutputFrom('row3key3');">k</button>
+      <button id="row3key4" onclick="printToOutputFrom('row3key4');">x</button>
+      <button id="row3key5" onclick="printToOutputFrom('row3key5');">b</button>
+      <button id="row3key6" onclick="printToOutputFrom('row3key6');">m</button>
+      <button id="row3key7" onclick="printToOutputFrom('row3key7');">w</button>
+      <button id="row3key8" onclick="printToOutputFrom('row3key8');">v</button>
+      <button id="row3key9" onclick="printToOutputFrom('row3key9');">z</button>
+    </p>
+
+    <p id="fifthRow">
+      <button id="spaceBar" onclick="printToOutput(' ');"> SPACE </button>
+    </p>
+
+
+    <footer>Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a> 2020-10-13 <a href="https://github.com/elsanussi-s-mneina/dvorak_virtual_keyboard_in_html_javascript">v1.0.0</a></footer>
+
+    <script>
+      const log = document.getElementById('outputText');
+
+document.addEventListener('keypress', logKey);
+document.addEventListener('keydown', onKeyDown);
+document.addEventListener('keyup', onKeyUp);
+
+function changeKeysToShiftedValues()
+{
+  document.getElementById("row0key0").innerText = "~";
+  document.getElementById("row0key1").innerText = "!";
+  document.getElementById("row0key2").innerText = "@";
+  document.getElementById("row0key3").innerText = "#";
+  document.getElementById("row0key4").innerText = "$";
+  document.getElementById("row0key5").innerText = "%";
+  document.getElementById("row0key6").innerText = "^";
+  document.getElementById("row0key7").innerText = "&";
+  document.getElementById("row0key8").innerText = "*";
+  document.getElementById("row0key9").innerText = "(";
+  document.getElementById("row0key10").innerText = ")";
+  document.getElementById("row0key11").innerText = "{";
+  document.getElementById("row0key12").innerText = "}";
+  document.getElementById("row1key0").innerText = "\"";
+  document.getElementById("row1key1").innerText = "<";
+  document.getElementById("row1key2").innerText = ">";
+  document.getElementById("row1key3").innerText = "P";
+  document.getElementById("row1key4").innerText = "Y";
+  document.getElementById("row1key5").innerText = "F";
+  document.getElementById("row1key6").innerText = "G";
+  document.getElementById("row1key7").innerText = "C";
+  document.getElementById("row1key8").innerText = "R";
+  document.getElementById("row1key9").innerText = "L";
+  document.getElementById("row1key10").innerText = "?";
+  document.getElementById("row1key11").innerText = "+";
+
+  document.getElementById("row2key0").innerText = "A";
+  document.getElementById("row2key1").innerText = "O";
+  document.getElementById("row2key2").innerText = "E";
+  document.getElementById("row2key3").innerText = "U";
+  document.getElementById("row2key4").innerText = "I";
+  document.getElementById("row2key5").innerText = "D";
+  document.getElementById("row2key6").innerText = "H";
+  document.getElementById("row2key7").innerText = "T";
+  document.getElementById("row2key8").innerText = "N";
+  document.getElementById("row2key9").innerText = "S";
+  document.getElementById("row2key10").innerText = "_";
+
+  document.getElementById("row3key0").innerText = ":";
+  document.getElementById("row3key1").innerText = "Q";
+  document.getElementById("row3key2").innerText = "J";
+  document.getElementById("row3key3").innerText = "K";
+  document.getElementById("row3key4").innerText = "X";
+  document.getElementById("row3key5").innerText = "B";
+  document.getElementById("row3key6").innerText = "M";
+  document.getElementById("row3key7").innerText = "W";
+  document.getElementById("row3key8").innerText = "V";
+  document.getElementById("row3key9").innerText = "Z";
+}
+
+function changeKeysToUnshiftedValues()
+{
+  document.getElementById("row0key0").innerText = "`";
+  document.getElementById("row0key1").innerText = "1";
+  document.getElementById("row0key2").innerText = "2";
+  document.getElementById("row0key3").innerText = "3";
+  document.getElementById("row0key4").innerText = "4";
+  document.getElementById("row0key5").innerText = "5";
+  document.getElementById("row0key6").innerText = "6";
+  document.getElementById("row0key7").innerText = "7";
+  document.getElementById("row0key8").innerText = "8";
+  document.getElementById("row0key9").innerText = "9";
+  document.getElementById("row0key10").innerText = "0";
+  document.getElementById("row0key11").innerText = "[";
+  document.getElementById("row0key12").innerText = "]";
+  document.getElementById("row1key0").innerText = "'";
+  document.getElementById("row1key1").innerText = ",";
+  document.getElementById("row1key2").innerText = ".";
+  document.getElementById("row1key3").innerText = "p";
+  document.getElementById("row1key4").innerText = "y";
+  document.getElementById("row1key5").innerText = "f";
+  document.getElementById("row1key6").innerText = "g";
+  document.getElementById("row1key7").innerText = "c";
+  document.getElementById("row1key8").innerText = "r";
+  document.getElementById("row1key9").innerText = "l";
+  document.getElementById("row1key10").innerText = "/";
+  document.getElementById("row1key11").innerText = "=";
+
+  document.getElementById("row2key0").innerText = "a";
+  document.getElementById("row2key1").innerText = "o";
+  document.getElementById("row2key2").innerText = "e";
+  document.getElementById("row2key3").innerText = "u";
+  document.getElementById("row2key4").innerText = "i";
+  document.getElementById("row2key5").innerText = "d";
+  document.getElementById("row2key6").innerText = "h";
+  document.getElementById("row2key7").innerText = "t";
+  document.getElementById("row2key8").innerText = "n";
+  document.getElementById("row2key9").innerText = "s";
+  document.getElementById("row2key10").innerText = "-";
+
+  document.getElementById("row3key0").innerText = ";";
+  document.getElementById("row3key1").innerText = "q";
+  document.getElementById("row3key2").innerText = "j";
+  document.getElementById("row3key3").innerText = "k";
+  document.getElementById("row3key4").innerText = "x";
+  document.getElementById("row3key5").innerText = "b";
+  document.getElementById("row3key6").innerText = "m";
+  document.getElementById("row3key7").innerText = "w";
+  document.getElementById("row3key8").innerText = "v";
+  document.getElementById("row3key9").innerText = "z";
+}
+
+
+function onKeyDown(e)
+{
+  if (e.code === "ShiftRight"
+   || e.code === "ShiftLeft")
+  {
+    changeKeysToShiftedValues();
+  }
+  console.log("onKeyDown:");
+  console.log(e);
+}
+
+function onKeyUp(e)
+{
+  if (e.code === "ShiftRight"
+   || e.code === "ShiftLeft")
+  {
+    changeKeysToUnshiftedValues();
+  }
+
+  console.log("onKeyUp:");
+  console.log(e);  
+}
+
+
+function printToOutput(output)
+{
+  document.getElementById('outputText').textContent += output; 
+}
+
+function printToOutputFrom(textSourceId)
+{
+  printToOutput(document.getElementById(textSourceId).textContent);
+}
+
+function fromDvorakToQwerty(keyCode, shiftKey) 
+{
+  if (keyCode == "Space")
+  {
+    return " ";
+  }
+  else if (keyCode == "Enter")
+  {
+    return "\n";
+  }
+  else if (keyCode == "KeyQ")
+  {
+    if (shiftKey)
+    {
+      return "\"";
+    }
+    else
+    {
+      return "'";
+    }
+  }
+  else if (keyCode == "KeyW")
+  {
+    if (shiftKey)
+    {
+      return "<";
+    }
+    else
+    {
+      return ",";
+    }
+  }
+  else if (keyCode == "KeyE")
+  {
+    if (shiftKey)
+    {
+      return ">";
+    }
+    else
+    {
+      return ".";
+    }
+  }
+  else if (keyCode == "KeyR")
+  {
+    if (shiftKey)
+    {
+      return "P";
+    }
+    else
+    {
+      return "p";
+    }
+  }
+  else if (keyCode == "KeyT")
+  {
+    if (shiftKey)
+    {
+      return "Y";
+    }
+    else
+    {
+      return "y";
+    }
+  }
+  else if (keyCode == "KeyY")
+  {
+    if (shiftKey)
+    {
+      return "F";
+    }
+    else
+    {
+      return "f";
+    }
+  }
+  else if (keyCode == "KeyU")
+  {
+    if (shiftKey)
+    {
+      return "G";
+    }
+    else
+    {
+      return "g";
+    }
+  }
+  else if (keyCode == "KeyI")
+  {
+    if (shiftKey)
+    {
+      return "C";
+    }
+    else
+    {
+      return "c";
+    }
+  }
+  else if (keyCode == "KeyO")
+  {
+    if (shiftKey)
+    {
+      return "R";
+    }
+    else
+    {
+      return "r";
+    }
+  }
+  else if (keyCode == "KeyP")
+  {
+    if (shiftKey)
+    {
+      return "L";
+    }
+    else
+    {
+      return "l";
+    }
+  }
+  else if (keyCode == "BracketLeft")
+  {
+    if (shiftKey)
+    {
+      return "?";
+    }
+    else
+    {
+      return "/";
+    }
+  }
+  else if (keyCode == "BracketRight")
+  {
+    if (shiftKey)
+    {
+      return "+";
+    }
+    else
+    {
+      return "=";
+    }
+  }
+  else if (keyCode == "Backslash")
+  {
+    if (shiftKey)
+    {
+      return "|";
+    }
+    else
+    {
+      return "\\";
+    }
+  }
+  else if (keyCode == "KeyA")
+  {
+    if (shiftKey)
+    {
+      return "A";
+    }
+    else
+    {
+      return "a";
+    }
+  }
+  else if (keyCode == "KeyS")
+  {
+    if (shiftKey)
+    {
+      return "O";
+    }
+    else
+    {
+      return "o";
+    }
+  }
+  else if (keyCode == "KeyD")
+  {
+    if (shiftKey)
+    {
+      return "E";
+    }
+    else
+    {
+      return "e";
+    }
+  }
+  else if (keyCode == "KeyF")
+  {
+    if (shiftKey)
+    {
+      return "U";
+    }
+    else
+    {
+      return "u";
+    }
+  }
+  else if (keyCode == "KeyG")
+  {
+    if (shiftKey)
+    {
+      return "i";
+    }
+    else
+    {
+      return "I";
+    }
+  }
+  else if (keyCode == "KeyH")
+  {
+    if (shiftKey)
+    {
+      return "D";
+    }
+    else
+    {
+      return "d";
+    }
+  }
+  else if (keyCode == "KeyJ")
+  {
+    if (shiftKey)
+    {
+      return "H";
+    }
+    else
+    {
+      return "h";
+    }
+  }
+  else if (keyCode == "KeyK")
+  {
+    if (shiftKey)
+    {
+      return "T";
+    }
+    else
+    {
+      return "t";
+    }
+  }
+  else if (keyCode == "KeyL")
+  {
+    if (shiftKey)
+    {
+      return "N";
+    }
+    else
+    {
+      return "n";
+    }
+  }
+  else if (keyCode == "Semicolon")
+  {
+    if (shiftKey)
+    {
+      return "S";
+    }
+    else
+    {
+      return "s";
+    }
+  }
+  else if (keyCode == "Quote")
+  {
+    if (shiftKey)
+    {
+      return "_";
+    }
+    else 
+    {
+      return "-";
+    }
+  }
+  else if (keyCode == "KeyZ")
+  {
+    if (shiftKey)
+    {
+      return ":";
+    }
+    else
+    {
+      return ";";
+    }
+  }
+  else if (keyCode == "KeyX")
+  {
+    if (shiftKey)
+    {
+      return "Q";
+    }
+    else
+    {
+      return "q";
+    }
+  }
+  else if (keyCode == "KeyC")
+  {
+    if (shiftKey)
+    {
+      return "J";
+    }
+    else
+    {
+      return "j";
+    }
+  }
+  else if (keyCode == "KeyV")
+  {
+    if (shiftKey)
+    {
+      return "K";
+    }
+    else
+    {
+      return "k";
+    }
+  }
+  else if (keyCode == "KeyB")
+  {
+    if (shiftKey)
+    {
+      return "X";
+    }
+    else 
+    {
+      return "x";
+    }
+  }
+  else if (keyCode == "KeyN")
+  {
+    if (shiftKey)
+    {
+      return "B";
+    }
+    else
+    {
+      return "b";
+    }
+  }
+  else if (keyCode == "KeyM")
+  {
+    if (shiftKey)
+    {
+      return "M";
+    }
+    else
+    {
+      return "m";
+    }
+  }
+  else if (keyCode == "Comma")
+  {
+    if (shiftKey)
+    {
+      return "W";
+    }
+    else
+    {
+      return "w";
+    }
+  }
+  else if (keyCode == "Period")
+  {
+    if (shiftKey)
+    {
+      return "V";
+    }
+    else
+    {
+      return "v";
+    }
+  }
+  else if (keyCode == "Slash")
+  {
+    if (shiftKey)
+    {
+      return "Z";
+    }
+    else
+    {
+      return "z";
+    }
+  }
+  else if (keyCode == "Backquote")
+  {
+    if (shiftKey)
+    {
+      return "~";
+    }
+    else
+    {
+      return "`";
+    }
+  }
+  else if (keyCode == "Digit1")
+  {
+    if (shiftKey)
+    {
+      return "!";
+    }
+    else
+    {
+      return "1";
+    }
+  }
+  else if (keyCode == "Digit2")
+  {
+    if (shiftKey)
+    {
+      return "@";
+    }
+    else
+    {
+      return "2";
+    }
+  }
+  else if (keyCode == "Digit3")
+  {
+    if (shiftKey)
+    {
+      return "#";
+    }
+    else
+    {
+      return "3";
+    }
+  }
+  else if (keyCode == "Digit4")
+  {
+    if (shiftKey)
+    {
+      return "$";
+    }
+    else
+    {
+      return "4";
+    }
+  }
+  else if (keyCode == "Digit5")
+  {
+    if (shiftKey)
+    {
+      return "%";
+    }
+    else
+    {
+      return "5";
+    }
+  }
+  else if (keyCode == "Digit6")
+  {
+    if (shiftKey)
+    {
+      return "^";
+    }
+    else
+    {
+      return "6";
+    }
+  }
+  else if (keyCode == "Digit7")
+  {
+    if (shiftKey)
+    {
+      return "&";
+    }
+    else
+    {
+      return "7";
+    }
+  }
+  else if (keyCode == "Digit8")
+  {
+    if (shiftKey)
+    {
+      return "*";
+    }
+    else
+    {
+      return "8";
+    }
+  }
+  else if (keyCode == "Digit9")
+  {
+    if (shiftKey)
+    {
+      return "(";
+    }
+    else
+    {
+      return "9";
+    }
+  }
+  else if (keyCode == "Digit0")
+  {
+    if (shiftKey)
+    {
+      return ")";
+    }
+    else
+    {
+      return "0";
+    }
+  }
+  else if (keyCode == "Minus")
+  {
+    if (shiftKey)
+    {
+      return "{";
+    }
+    else
+    {
+      return "[";
+    }
+  }
+  else if (keyCode == "Equal")
+  {
+    if (shiftKey)
+    {
+      return "}";
+    } 
+    else
+    {
+      return "]";
+    }
+  }
+  else
+  {
+    return keyCode;
+  }
+}
+
+function logKey(e)
+{
+  console.log(e);
+  var output = fromDvorakToQwerty(e.code, e.shiftKey);
+  printToOutput(output);
+}
+    </script>
+  </body>
+</html>

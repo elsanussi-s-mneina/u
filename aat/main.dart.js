@@ -29983,7 +29983,7 @@ if(b==="network"||b==="liveStream"||b==="file")return a
 if(J.cb(a).bH(a,"/"))a=C.c.TC(a,"/","")
 s=window.location.href
 s.toString
-return H.vO(s,"/#/","")+"/test3/assets/"+a}}
+return H.vO(s,"/#/","")+"/assets/"+a}}
 M.w9.prototype={
 eC:function(a){var s,r=this.a
 if(r.a2(0,a))return r.h(0,a)

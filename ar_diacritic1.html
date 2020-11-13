@@ -35,7 +35,27 @@ SOFTWARE.
 
   <title>Basic Arabic Diacritic Remover</title>
   <script>
-    var EXAMPLE_TEXT = 'شُكْرًا جَزِيْلًا. \n تُوْجَدْ شَدَّةٌ، وَفَتْحَةٌ عَلَى هَٰذِهِ الوَرَقَةٍ ';
+    var previousStates = []; 
+
+    function disableUndoButton()
+    {
+      document.getElementById("undoButton").disabled = true;
+    }
+    
+    function enableUndoButton()
+    {
+      document.getElementById("undoButton").disabled = false;
+    }
+
+
+    function undoActionEventHandler()
+    {
+      document.getElementById('arabicInputOutputTextArea').value = previousStates.pop();
+      if (previousStates.length == 0)
+      {
+        disableUndoButton();
+      }
+    }
 
     function removeDiacritics(inputString, keepFathatan)
     {
@@ -99,43 +119,63 @@ SOFTWARE.
 
     function removeDiacriticsEventHandler()
     {
-      var inputText = document.getElementById('arabicInputTextArea').value;
+      var inputText = document.getElementById('arabicInputOutputTextArea').value;
       var keepFathatan = document.getElementById('keepFathatanCheckbox').checked;
       var outputText = removeDiacritics(inputText, keepFathatan);
-      document.getElementById('arabicOutputTextArea').value = outputText;
+      
+      // So that the user never clicks on the undo button, and it doe      nothing.
+      previousStates.push(document.getElementById('arabicInputOutputTextArea').value);
+      enableUndoButton();
+      document.getElementById('arabicInputOutputTextArea').value = outputText;
     }
-
-    function placeExampleTextEventHandler()
-    {
-      document.getElementById('arabicInputTextArea').value = EXAMPLE_TEXT;
-    }
-
   </script>
+  <style>
+    *
+    {
+      font-family: Tahoma, sans-serif;
+      margin-left: 4px;
+    }
+
+    h1
+    {
+      font-size: 22px;
+    }
+    h2
+    {
+      font-size: 20px;
+    }
+    textarea
+    {
+      font-size: 30px;
+    }
+    
+    button
+    {
+      padding: 1em;
+      font-size: 20px;
+    }
+
+    footer
+    {
+      margin-top: 3em;
+      font-size: 10px;
+    }
+
+  </style>
 </head>
 <body>
-  <h1>Basic Arabic Diacritic Remover: <span lang="ar"> الحاذف البسيط للتشكيل </span></h1>
-  <div role="form">
-    <label for="arabicInputTextArea"><h2>Input: <span lang="ar">المعطيات</span></h2></label>
-    <p>Paste or type diacritic text in the following text input area: ضع النص   بالتشكيل في الصندوق التالي
-    <br>
-      <button onclick="placeExampleTextEventHandler();">Put Example ضِعْ   مَثَلًا</button>
-    </p>
-    <textarea id="arabicInputTextArea" rows="4" cols="100" lang="ar"></textarea>
-  
-    <h3>Options اختيارات</h3>
+  <h1>Basic Arabic Diacritic Remover: <span lang="ar"> الحاذف للتشكيل </span></h1>
+  <label for="arabicInputOutputTextArea" aria-live="assertive"><h2>For Text with Diacritics: <span lang="ar"> لِنصّ بالتشكيل</span></h2></label>
+  <textarea id="arabicInputOutputTextArea" rows="4" cols="30" dir="rtl" lang="ar" aria-live="assertive">أَهْلًا وَسَهْلًا.</textarea>
+  <div>
     <input type="checkbox" id="keepFathatanCheckbox">
-    <label for="keepFathatanCheckbox"> Do not delete fatḥatān (suffix -an)   diacritic. لا تحذف الفتحتان</label><br>
-  
-    <h2>Actions أوامر</h2>
-    <button onclick="removeDiacriticsEventHandler();">Remove Diacritics احذف   التشكيل</button>
-  
-  
-    <label for="arabicOutputTextArea"><h2>Results النتيجة</h2></label>
-    <textarea id="arabicOutputTextArea" rows="4" cols="100" lang="ar"></textarea>
-  </div>
+    <label for="keepFathatanCheckbox"> Do not delete fatḥatān  diacritic. لا تحذف الفتحتان</label>
+  </div>  
+  <button onclick="removeDiacriticsEventHandler();">Remove Diacritics احذف     التشكيل</button> 
+  <button id="undoButton" onclick="undoActionEventHandler();" disabled>Put back diacritics. ضِعْ النِصَّ الَّذِيْ كَانَ مَوْجُوْدًا مِنْ قَبْلِ الحَذْفِ</button> 
   <footer><a href="https://github.com/elsanussi-s-mneina/">Elsanussi Mneina made this page. صنع هذه الصفحة السنوسي امنينة </a>
-    <p><a href="https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app">v1.3, (2020-11-12)</a></p>
+    <p><a href="https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app">v2.0, (2020-11-12)</a></p>
   </footer>
 </body>
 </html>
-<!-- Except for this line, this is a copy of the file at https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app/commit/0c97cf6ccb28f7460d69e1e98f8efa1df44ee102-->
+<!-- Except for this line, this is a copy of the file at https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app/commit/48a3f21471db703a3d072113825e567227b96bc6-->

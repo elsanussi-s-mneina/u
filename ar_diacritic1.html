@@ -35,7 +35,7 @@ SOFTWARE.
 
   <title>Basic Arabic Diacritic Remover</title>
   <script>
-    var EXAMPLE_TEXT = 'شُكْرًا جَزِيْلًا. Thank you very much.\n تُوْجَدْ شَدَّةٌ، وَفَتْحَةٌ عَلَى هَٰذَهِ الوَرَقَةٍ ';
+    var EXAMPLE_TEXT = 'شُكْرًا جَزِيْلًا. \n تُوْجَدْ شَدَّةٌ، وَفَتْحَةٌ عَلَى هَٰذِهِ الوَرَقَةٍ ';
 
     function removeDiacritics(inputString, keepFathatan)
     {
@@ -113,27 +113,29 @@ SOFTWARE.
   </script>
 </head>
 <body>
-  <h1>Basic Arabic Diacritic Remover: الحاذف البسيط للتشكيل</h1>
-  <h2>Input: المعطيات</h2>
-  <p>Paste or type diacritic text in the following text input area: ضع النص بالتشكيل في الصندوق التالي
-  <br>
-    <button onclick="placeExampleTextEventHandler();">Put Example ضِعْ مَثَلًا</button>
-  </p>
-  <textarea id="arabicInputTextArea" rows="4" cols="100"></textarea>
+  <h1>Basic Arabic Diacritic Remover: <span lang="ar"> الحاذف البسيط للتشكيل </span></h1>
+  <div role="form">
+    <label for="arabicInputTextArea"><h2>Input: <span lang="ar">المعطيات</span></h2></label>
+    <p>Paste or type diacritic text in the following text input area: ضع النص   بالتشكيل في الصندوق التالي
+    <br>
+      <button onclick="placeExampleTextEventHandler();">Put Example ضِعْ   مَثَلًا</button>
+    </p>
+    <textarea id="arabicInputTextArea" rows="4" cols="100" lang="ar"></textarea>
   
-  <h2>Actions أوامر</h2>
-  <button onclick="removeDiacriticsEventHandler();">Remove Diacritics احذف التشكيل</button>
-  <h3>Options اختيارات</h3>
-  <input type="checkbox" id="keepFathatanCheckbox" checked=true >
-  <label for="keepFathatanCheckbox"> Do not delete fatḥatān diacritic. لا تحذف الفتحتان</label><br>
-
-
-  <h2>Output النتيجة</h2>
-  <textarea id="arabicOutputTextArea" rows="4" cols="100"></textarea>
-
+    <h3>Options اختيارات</h3>
+    <input type="checkbox" id="keepFathatanCheckbox">
+    <label for="keepFathatanCheckbox"> Do not delete fatḥatān (suffix -an)   diacritic. لا تحذف الفتحتان</label><br>
+  
+    <h2>Actions أوامر</h2>
+    <button onclick="removeDiacriticsEventHandler();">Remove Diacritics احذف   التشكيل</button>
+  
+  
+    <label for="arabicOutputTextArea"><h2>Results النتيجة</h2></label>
+    <textarea id="arabicOutputTextArea" rows="4" cols="100" lang="ar"></textarea>
+  </div>
   <footer><a href="https://github.com/elsanussi-s-mneina/">Elsanussi Mneina made this page. صنع هذه الصفحة السنوسي امنينة </a>
-    <p><a href="https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app">v1.2, (2020-10-09)</a></p>
+    <p><a href="https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app">v1.3, (2020-11-12)</a></p>
   </footer>
 </body>
 </html>
-<!-- Except for this line, this is a copy of the file at https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app/commit/6cb6cadceae34d2a3a2e23e641f3ca506711a25e-->
+<!-- Except for this line, this is a copy of the file at https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app/commit/0c97cf6ccb28f7460d69e1e98f8efa1df44ee102-->

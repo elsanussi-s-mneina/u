@@ -1,2 +1,5 @@
 2021-01-26
 - added Custom keyboard practice single page web application
+
+2021-01-26 (2)
+- added a single page web application for converting between Latin script and Arabic script using plain latin letters. This is an implemntation of the one-apostrophe transliteration system, which I have started developing sometime in January 2021.

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Keyboard Practice</title>
+		<!-- Version 1.03 -->
+	</head>
+	<body>
+		<h1>Custom Typing Practice</h1>
+		<p>This is a way to practice typing whatever text or set of characters you choose using whatever keyboard layout you have set up on your machine. It can even handle dead keys gracefully. The source code is all in one file, so you can use this offline by saving this page.</p>
+		<div>
+			<label for="characterSetTextArea">Character Set to Practice:</label>
+
+			<textarea id="characterSetTextArea" name="characterSetTextArea" rows="4" cols="50">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</textarea>
+			<button onclick="addPunctuationCharacters();">Add punctuation</button>
+		</div>
+		<div>
+			<label for="targetTextArea">Target Text:</label>
+
+			<textarea id="targetTextArea" name="targetTextArea" rows="4" cols="50">
+			</textarea>
+			<button onclick="changeTargetText();">Generate Next Text</button>
+		</div>
+		<div>
+			<label for="practiceTextArea">Type what is in the target area into here:</label>
+
+			<textarea id="practiceTextArea" name="practiceTextArea" rows="4" cols="50" onInput="checkCurrentChange();">
+			</textarea>
+			<div>
+				<label id="feedbackLabel">Welcome!</label>
+			</div>
+			<div>
+			<input type="checkbox" id="captureTabKey" name="captureTabKey">
+			<label for="captureTabKey">Capture Tab key</label>
+			</div>
+			<div id="tabModePanel">
+				<input type="radio" id="tabMode1"
+				name="tabMode" value="tabCharacter">
+				<label for="contactChoice1">Insert tab character</label>
+
+				<input type="radio" id="tabMode2"
+				name="tabMode" value="2Spaces">
+				<label for="tabMode2">Insert 2 spaces</label>
+
+				<input type="radio" id="tabMode4"
+				name="tabMode" value="4Spaces">
+				<label for="tabMode4">Insert 4 Spaces</label>
+			</div>
+
+
+		</div>
+		<footer>
+		<p><a style="font-size: x-small; margin-left: 5em" href="https://github.com/elsanussi-s-mneina/custom-typing-practice-html-js">Get source code and documentation: v1.03, (2021-01-26). Made by Elsanussi Mneina</a></p>
+		</footer>  
+	<script>
+		const TARGET_TEXT_LENGTH = 7;
+		const FINAL_ERROR_GRACE = 1; // should be at least one to allow for deadkeys.
+
+		const punctuationCharacterSet = "'" + '"' + "\\" + "%&?+@$_[]!;/(=0{}1*)-6789|2345";
+
+
+		function addPunctuationCharacters()
+		{
+			addToCharacterSet(punctuationCharacterSet);
+		}
+
+		function getTargetTextArea()
+		{
+			return document.getElementById('targetTextArea');
+		}
+
+		function getPracticeTextArea()
+		{
+			return document.getElementById('practiceTextArea');
+		}
+
+		function generateNewTargetText()
+		{
+			let result = "";
+			let characterSet = getCharacterSet();
+
+			for (let i = 0; i < TARGET_TEXT_LENGTH; i++)
+			{
+				let randomIndex = Math.random() * characterSet.length;
+				result += characterSet.charAt(randomIndex);
+			}
+			return result;
+		}
+
+		function getCharacterSet()
+		{
+			return document.getElementById('characterSetTextArea').value;
+		}
+
+		function addToCharacterSet(text)
+		{
+			document.getElementById('characterSetTextArea').value = document.getElementById('characterSetTextArea').value + text;
+		}
+
+		function clearPracticeText()
+		{
+			getPracticeTextArea().value = '';
+		}
+
+		function changeTargetText()
+		{
+			clearPracticeText();
+			getTargetTextArea().value = generateNewTargetText() + '.';
+		}
+
+		function checkCurrentChange()
+		{
+			let targetText = getTargetTextArea().value;
+			let practiceText = getPracticeTextArea().value;
+
+			if (practiceText == targetText)
+			{
+				changeTargetText();
+				tellUser("Congratulations, you typed " + targetText.length + " characters correctly!")
+			}
+
+			if (practiceText.length > FINAL_ERROR_GRACE && practiceText.substring(0, practiceText.length - FINAL_ERROR_GRACE) != targetText.substring(0, practiceText.length - FINAL_ERROR_GRACE))
+			{
+				clearPracticeText();
+
+				const userMistakeMessage = "You typed the wrong character: (" + practiceText.substring(practiceText.length - 1 - FINAL_ERROR_GRACE, practiceText.length - 1 - FINAL_ERROR_GRACE + 1) + ") should have been (" + targetText.substring(practiceText.length - 1 - FINAL_ERROR_GRACE, practiceText.length - 1 - FINAL_ERROR_GRACE + 1) + ").";
+
+				tellUser(userMistakeMessage)
+			}
+		}
+
+		function tellUser(message)
+		{
+			document.getElementById('feedbackLabel').innerText = message;
+		}
+
+		function isCaptureTabMode()
+		{
+			return document.getElementById('captureTabKey').checked;
+		}
+
+		function getTabEquivalentCharacter()
+		{
+			if (document.getElementById('tabMode2').checked)
+				return '  '; // 2 spaces
+			else if (document.getElementById('tabMode4').checked)
+				return '    '; // 4 spaces
+			else
+				return '\t';
+		}
+
+		// The following 20 or so lines is based heavily on the 
+		// discussion at https://stackoverflow.com/questions/18316395/javascript-for-handling-tab-key-press/18316821
+		// accessed at January 15, 2021.
+		getPracticeTextArea().addEventListener('keydown', function(e) {
+		if (isCaptureTabMode() && e.key == 'Tab') {
+			e.preventDefault();
+			const start = this.selectionStart;
+			const end = this.selectionEnd;
+
+			const tabLike = getTabEquivalentCharacter();
+			// set textarea value to: text before caret + tab + text after caret
+			this.value = this.value.substring(0, start) +
+			tabLike + this.value.substring(end);
+
+			const wantedCaretPosition = start + tabLike.length;
+
+			// Put caret after tab-like character or characters.
+			this.selectionStart = wantedCaretPosition;
+			this.selectionEnd = wantedCaretPosition;
+
+			// Needed for this typing game to be able to correct what was input.
+			checkCurrentChange();
+		}
+		});
+	</script>
+
+	</body>
+</html>

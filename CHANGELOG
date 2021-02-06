@@ -3,3 +3,7 @@
 
 2021-01-26 (2)
 - added a single page web application for converting between Latin script and Arabic script using plain latin letters. This is an implementation of the one-apostrophe transliteration system, which I have started developing sometime in January 2021.
+
+2021-02-05
+Updated Dvorak virtual keyboard to v1.0.6.
+Updated Arabic transliteration application to v1.07.

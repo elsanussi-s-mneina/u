@@ -1,0 +1,1122 @@
+<!--
+	MIT License
+
+Copyright (c) 2021 Elsanussi S. Mneina
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>Arabic (PC) Virtual Keyboard</title>
+		<style>
+		button
+		{
+			min-width: 4em;
+			min-height: 4em;
+			font-size: 15px;
+			padding:0px;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Arabic (PC) Virtual Keyboard</h1>
+		<p>Type as though you have an Arabic (PC) keyboard set up in the following text area.</p>
+		<textarea disabled id="outputText" rows="5" cols="50" aria-live="polite" dir="rtl" style="min-height: 40px; padding: 7px; font-size:25px; color:black;"></textarea>
+		<!-- We use the aria-live attribute so that screenreaders will read out changes to the textarea when they occur. This is useful for accessibility. -->
+		<button id="copyButton" onclick="copyTextIntoClipboard();">Copy text</button>
+		<button id="clearTextButton" onclick="clearText();">Clear text</button>
+
+		<p id="firstRow">
+			<button id="row0key0" onclick="printToOutputFrom('row0key0');">`</button>
+			<button id="row0key1" onclick="printToOutputFrom('row0key1');">1</button>
+			<button id="row0key2" onclick="printToOutputFrom('row0key2');">2</button>
+			<button id="row0key3" onclick="printToOutputFrom('row0key3');">3</button>
+			<button id="row0key4" onclick="printToOutputFrom('row0key4');">4</button>
+			<button id="row0key5" onclick="printToOutputFrom('row0key5');">5</button>
+			<button id="row0key6" onclick="printToOutputFrom('row0key6');">6</button>
+			<button id="row0key7" onclick="printToOutputFrom('row0key7');">7</button>
+			<button id="row0key8" onclick="printToOutputFrom('row0key8');">8</button>
+			<button id="row0key9" onclick="printToOutputFrom('row0key9');">9</button>
+			<button id="row0key10" onclick="printToOutputFrom('row0key10');">0</button>
+			<button id="row0key11" onclick="printToOutputFrom('row0key11');">[</button>
+			<button id="row0key12" onclick="printToOutputFrom('row0key12');">]</button>
+			<button id="deleteFinalCharButton" onclick="deleteFinalCharacter();">(delete last character)</button>
+		</p>
+
+		<p id="secondRow">
+			<button id="tabKey" onclick="printToOutput('\t');">(tab)</button>
+			<button id="row1key0" onclick="printToOutputFrom('row1key0');">'</button>
+			<button id="row1key1" onclick="printToOutputFrom('row1key1');">,</button>
+			<button id="row1key2" onclick="printToOutputFrom('row1key2');">.</button>
+			<button id="row1key3" onclick="printToOutputFrom('row1key3');">p</button>
+			<button id="row1key4" onclick="printToOutputFrom('row1key4');">y</button>
+			<button id="row1key5" onclick="printToOutputFrom('row1key5');">f</button>
+			<button id="row1key6" onclick="printToOutputFrom('row1key6');">g</button>
+			<button id="row1key7" onclick="printToOutputFrom('row1key7');">c</button>
+			<button id="row1key8" onclick="printToOutputFrom('row1key8');">r</button>
+			<button id="row1key9" onclick="printToOutputFrom('row1key9');">l</button>
+			<button id="row1key10" onclick="printToOutputFrom('row1key10');">/</button>
+			<button id="row1key11" onclick="printToOutputFrom('row1key11');">=</button>
+			<button id="row1key12" onclick="printToOutputFrom('row1key12');">\</button>
+		</p>
+
+		<p id="thirdRow">
+			<button id="capsLock" onclick="toggleCapsLock();">(caps lock)</button>
+
+			<button id="row2key0" onclick="printToOutputFrom('row2key0');">a</button>
+			<button id="row2key1" onclick="printToOutputFrom('row2key1');">o</button>
+			<button id="row2key2" onclick="printToOutputFrom('row2key2');">e</button>
+			<button id="row2key3" onclick="printToOutputFrom('row2key3');">u</button>
+			<button id="row2key4" onclick="printToOutputFrom('row2key4');">i</button>
+			<button id="row2key5" onclick="printToOutputFrom('row2key5');">d</button>
+			<button id="row2key6" onclick="printToOutputFrom('row2key6');">h</button>
+			<button id="row2key7" onclick="printToOutputFrom('row2key7');">t</button>
+			<button id="row2key8" onclick="printToOutputFrom('row2key8');">n</button>
+			<button id="row2key9" onclick="printToOutputFrom('row2key9');">s</button>
+			<button id="row2key10" onclick="printToOutputFrom('row2key10');">-</button>
+			<button id="newLine" onclick="printToOutput('\n'); nextShiftValue();"> (new line) </button>
+		</p>
+
+		<p id="fourthRow">
+			<button id="leftShift" onclick="pressShift();">(left shift)</button>
+
+			<button id="row3key0" onclick="printToOutputFrom('row3key0');">;</button>
+			<button id="row3key1" onclick="printToOutputFrom('row3key1');">q</button>
+			<button id="row3key2" onclick="printToOutputFrom('row3key2');">j</button>
+			<button id="row3key3" onclick="printToOutputFrom('row3key3');">k</button>
+			<button id="row3key4" onclick="printToOutputFrom('row3key4');">x</button>
+			<button id="row3key5" onclick="printToOutputFrom('row3key5');">b</button>
+			<button id="row3key6" onclick="printToOutputFrom('row3key6');">m</button>
+			<button id="row3key7" onclick="printToOutputFrom('row3key7');">w</button>
+			<button id="row3key8" onclick="printToOutputFrom('row3key8');">v</button>
+			<button id="row3key9" onclick="printToOutputFrom('row3key9');">z</button>
+
+			<button id="rightShift" onclick="pressShift();">(right shift)</button>
+		</p>
+
+		<p id="fifthRow">
+			<button id="spaceBar" style="margin-left: 10em; width: 25em;" onclick="printToOutput(' '); nextShiftValue();"> (space) </button>
+		</p>
+
+
+		<footer>Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a> Last updated on 2021-02-06 <a href="https://github.com/elsanussi-s-mneina/dvorak_virtual_keyboard_in_html_javascript">v0.7.0</a></footer>
+
+		<script>
+			const log = document.getElementById('outputText');
+			var permanentShift = false;
+			var capsLock = false;
+
+document.addEventListener('keypress', logKey);
+document.addEventListener('keydown', onKeyDown);
+document.addEventListener('keyup', onKeyUp);
+
+const unshiftedText = "ذ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ٠ - = ض ص ث ق ف غ ع ه خ ح ج د" + "\ " + " ش س ي ب ل ا ت ن م ك ط ئ ء ؤ ر لا ى ة و ز ظ";
+const unshiftedTextExtraISOChar = "ذ";
+
+const unshiftedTextValues = unshiftedText.split(' ');
+
+const shiftedText = "ّ ! @ # $ ٪ ^ & * ) ( ـ + " + 
+  "َ ً ُ ٌ لإ إ ‘ ÷ × ؛ < > | " +
+  "ِ ٍ ] [ لأ أ ـ ، / : \" " + 
+  "~ ْ } { لآ آ ’ , . ؟";
+
+const shiftedTextValues = shiftedText.split(' ');
+
+const capsText = "٫ 1 2 3 4 5 6 7 8 9 0 - = " + 
+  "ض ص ث ق ف غ ع ه خ ح ج د \\ " +
+  "ش س ي ب ل ا ت ن م ك ط " +
+  "ئ ء ؤ ر لا ى ة و ز ظ";
+
+const capsTextValues = capsText.split(' ');
+
+const row0key0_value = unshiftedTextValues[0];
+const row0key1_value = unshiftedTextValues[1];
+const row0key2_value = unshiftedTextValues[2];
+const row0key3_value = unshiftedTextValues[3];
+const row0key4_value = unshiftedTextValues[4];
+const row0key5_value = unshiftedTextValues[5];
+const row0key6_value = unshiftedTextValues[6];
+const row0key7_value = unshiftedTextValues[7];
+const row0key8_value = unshiftedTextValues[8];
+const row0key9_value = unshiftedTextValues[9];
+const row0key10_value = unshiftedTextValues[10];
+const row0key11_value = unshiftedTextValues[11];
+const row0key12_value = unshiftedTextValues[12];
+
+const row1key0_value = unshiftedTextValues[13];
+const row1key1_value = unshiftedTextValues[14];
+const row1key2_value = unshiftedTextValues[15];
+const row1key3_value = unshiftedTextValues[16];
+const row1key4_value = unshiftedTextValues[17];
+const row1key5_value = unshiftedTextValues[18];
+const row1key6_value = unshiftedTextValues[19];
+const row1key7_value = unshiftedTextValues[20];
+const row1key8_value = unshiftedTextValues[21];
+const row1key9_value = unshiftedTextValues[22];
+const row1key10_value = unshiftedTextValues[23];
+const row1key11_value = unshiftedTextValues[24];
+const row1key12_value = unshiftedTextValues[25];
+
+const row2key0_value = unshiftedTextValues[26];
+const row2key1_value = unshiftedTextValues[27];
+const row2key2_value = unshiftedTextValues[28];
+const row2key3_value = unshiftedTextValues[29];
+const row2key4_value = unshiftedTextValues[30];
+const row2key5_value = unshiftedTextValues[31];
+const row2key6_value = unshiftedTextValues[32];
+const row2key7_value = unshiftedTextValues[33];
+const row2key8_value = unshiftedTextValues[34];
+const row2key9_value = unshiftedTextValues[35];
+const row2key10_value = unshiftedTextValues[36];
+
+const row3key0_value = unshiftedTextValues[37];
+const row3key1_value = unshiftedTextValues[38];
+const row3key2_value = unshiftedTextValues[39];
+const row3key3_value = unshiftedTextValues[40];
+const row3key4_value = unshiftedTextValues[41];
+const row3key5_value = unshiftedTextValues[42];
+const row3key6_value = unshiftedTextValues[43];
+const row3key7_value = unshiftedTextValues[44];
+const row3key8_value = unshiftedTextValues[45];
+const row3key9_value = unshiftedTextValues[46];
+
+
+
+
+
+
+
+const row0key0_shifted_value  = shiftedTextValues[0];
+const row0key1_shifted_value  = shiftedTextValues[1];
+const row0key2_shifted_value  = shiftedTextValues[2];
+const row0key3_shifted_value  = shiftedTextValues[3];
+const row0key4_shifted_value  = shiftedTextValues[4];
+const row0key5_shifted_value  = shiftedTextValues[5];
+const row0key6_shifted_value  = shiftedTextValues[6];
+const row0key7_shifted_value  = shiftedTextValues[7];
+const row0key8_shifted_value  = shiftedTextValues[8];
+const row0key9_shifted_value  = shiftedTextValues[9];
+const row0key10_shifted_value = shiftedTextValues[10];
+const row0key11_shifted_value = shiftedTextValues[11];
+const row0key12_shifted_value = shiftedTextValues[12];
+
+const row1key0_shifted_value  = shiftedTextValues[13];
+const row1key1_shifted_value  = shiftedTextValues[14];
+const row1key2_shifted_value  = shiftedTextValues[15];
+const row1key3_shifted_value  = shiftedTextValues[16];
+const row1key4_shifted_value  = shiftedTextValues[17];
+const row1key5_shifted_value  = shiftedTextValues[18];
+const row1key6_shifted_value  = shiftedTextValues[19];
+const row1key7_shifted_value  = shiftedTextValues[20];
+const row1key8_shifted_value  = shiftedTextValues[21];
+const row1key9_shifted_value  = shiftedTextValues[22];
+const row1key10_shifted_value = shiftedTextValues[23];
+const row1key11_shifted_value = shiftedTextValues[24];
+const row1key12_shifted_value = shiftedTextValues[25];
+
+const row2key0_shifted_value  = shiftedTextValues[26];
+const row2key1_shifted_value  = shiftedTextValues[27];
+const row2key2_shifted_value  = shiftedTextValues[28];
+const row2key3_shifted_value  = shiftedTextValues[29];
+const row2key4_shifted_value  = shiftedTextValues[30];
+const row2key5_shifted_value  = shiftedTextValues[31];
+const row2key6_shifted_value  = shiftedTextValues[32];
+const row2key7_shifted_value  = shiftedTextValues[33];
+const row2key8_shifted_value  = shiftedTextValues[34];
+const row2key9_shifted_value  = shiftedTextValues[35];
+const row2key10_shifted_value = shiftedTextValues[36];
+
+const row3key0_shifted_value = shiftedTextValues[37];
+const row3key1_shifted_value = shiftedTextValues[38];
+const row3key2_shifted_value = shiftedTextValues[39];
+const row3key3_shifted_value = shiftedTextValues[40];
+const row3key4_shifted_value = shiftedTextValues[41];
+const row3key5_shifted_value = shiftedTextValues[42];
+const row3key6_shifted_value = shiftedTextValues[43];
+const row3key7_shifted_value = shiftedTextValues[44];
+const row3key8_shifted_value = shiftedTextValues[45];
+const row3key9_shifted_value = shiftedTextValues[46];
+
+
+
+
+
+const row0key0_caps_value  = capsTextValues[0];
+const row0key1_caps_value  = capsTextValues[1];
+const row0key2_caps_value  = capsTextValues[2];
+const row0key3_caps_value  = capsTextValues[3];
+const row0key4_caps_value  = capsTextValues[4];
+const row0key5_caps_value  = capsTextValues[5];
+const row0key6_caps_value  = capsTextValues[6];
+const row0key7_caps_value  = capsTextValues[7];
+const row0key8_caps_value  = capsTextValues[8];
+const row0key9_caps_value  = capsTextValues[9];
+const row0key10_caps_value = capsTextValues[10];
+const row0key11_caps_value = capsTextValues[11];
+const row0key12_caps_value = capsTextValues[12];
+
+const row1key0_caps_value  = capsTextValues[13];
+const row1key1_caps_value  = capsTextValues[14];
+const row1key2_caps_value  = capsTextValues[15];
+const row1key3_caps_value  = capsTextValues[16];
+const row1key4_caps_value  = capsTextValues[17];
+const row1key5_caps_value  = capsTextValues[18];
+const row1key6_caps_value  = capsTextValues[19];
+const row1key7_caps_value  = capsTextValues[20];
+const row1key8_caps_value  = capsTextValues[21];
+const row1key9_caps_value  = capsTextValues[22];
+const row1key10_caps_value = capsTextValues[23];
+const row1key11_caps_value = capsTextValues[24];
+const row1key12_caps_value = capsTextValues[25];
+
+const row2key0_caps_value  = capsTextValues[26];
+const row2key1_caps_value  = capsTextValues[27];
+const row2key2_caps_value  = capsTextValues[28];
+const row2key3_caps_value  = capsTextValues[29];
+const row2key4_caps_value  = capsTextValues[30];
+const row2key5_caps_value  = capsTextValues[31];
+const row2key6_caps_value  = capsTextValues[32];
+const row2key7_caps_value  = capsTextValues[33];
+const row2key8_caps_value  = capsTextValues[34];
+const row2key9_caps_value  = capsTextValues[35];
+const row2key10_caps_value = capsTextValues[36];
+
+const row3key0_caps_value = capsTextValues[37];
+const row3key1_caps_value = capsTextValues[38];
+const row3key2_caps_value = capsTextValues[39];
+const row3key3_caps_value = capsTextValues[40];
+const row3key4_caps_value = capsTextValues[41];
+const row3key5_caps_value = capsTextValues[42];
+const row3key6_caps_value = capsTextValues[43];
+const row3key7_caps_value = capsTextValues[44];
+const row3key8_caps_value = capsTextValues[45];
+const row3key9_caps_value = capsTextValues[46];
+
+
+
+
+
+changeKeysToUnshiftedValues();
+
+function changeKeysToShiftedValues()
+{
+	document.getElementById("row0key0").innerText = row0key0_shifted_value;
+	document.getElementById("row0key1").innerText = row0key1_shifted_value;
+	document.getElementById("row0key2").innerText = row0key2_shifted_value;
+	document.getElementById("row0key3").innerText = row0key3_shifted_value;
+	document.getElementById("row0key4").innerText = row0key4_shifted_value;
+	document.getElementById("row0key5").innerText = row0key5_shifted_value;
+	document.getElementById("row0key6").innerText = row0key6_shifted_value;
+	document.getElementById("row0key7").innerText = row0key7_shifted_value;
+	document.getElementById("row0key8").innerText = row0key8_shifted_value;
+	document.getElementById("row0key9").innerText = row0key9_shifted_value;
+	document.getElementById("row0key10").innerText = row0key10_shifted_value;
+	document.getElementById("row0key11").innerText = row0key11_shifted_value;
+	document.getElementById("row0key12").innerText = row0key12_shifted_value;
+
+	document.getElementById("row1key0").innerText = row1key0_shifted_value;
+	document.getElementById("row1key1").innerText = row1key1_shifted_value;
+	document.getElementById("row1key2").innerText = row1key2_shifted_value;
+	document.getElementById("row1key3").innerText = row1key3_shifted_value;
+	document.getElementById("row1key4").innerText = row1key4_shifted_value;
+	document.getElementById("row1key5").innerText = row1key5_shifted_value;
+	document.getElementById("row1key6").innerText = row1key6_shifted_value;
+	document.getElementById("row1key7").innerText = row1key7_shifted_value;
+	document.getElementById("row1key8").innerText = row1key8_shifted_value;
+	document.getElementById("row1key9").innerText = row1key9_shifted_value;
+	document.getElementById("row1key10").innerText = row1key10_shifted_value;
+	document.getElementById("row1key11").innerText = row1key11_shifted_value;
+
+	document.getElementById("row2key0").innerText = row2key0_shifted_value;
+	document.getElementById("row2key1").innerText = row2key1_shifted_value;
+	document.getElementById("row2key2").innerText = row2key2_shifted_value;
+	document.getElementById("row2key3").innerText = row2key3_shifted_value;
+	document.getElementById("row2key4").innerText = row2key4_shifted_value;
+	document.getElementById("row2key5").innerText = row2key5_shifted_value;
+	document.getElementById("row2key6").innerText = row2key6_shifted_value;
+	document.getElementById("row2key7").innerText = row2key7_shifted_value;
+	document.getElementById("row2key8").innerText = row2key8_shifted_value;
+	document.getElementById("row2key9").innerText = row2key9_shifted_value;
+	document.getElementById("row2key10").innerText = row2key10_shifted_value;
+
+	document.getElementById("row3key0").innerText = row3key0_shifted_value;
+	document.getElementById("row3key1").innerText = row3key1_shifted_value;
+	document.getElementById("row3key2").innerText = row3key2_shifted_value;
+	document.getElementById("row3key3").innerText = row3key3_shifted_value;
+	document.getElementById("row3key4").innerText = row3key4_shifted_value;
+	document.getElementById("row3key5").innerText = row3key5_shifted_value;
+	document.getElementById("row3key6").innerText = row3key6_shifted_value;
+	document.getElementById("row3key7").innerText = row3key7_shifted_value;
+	document.getElementById("row3key8").innerText = row3key8_shifted_value;
+	document.getElementById("row3key9").innerText = row3key9_shifted_value;
+}
+
+function changeKeysToCapsValues()
+{
+	document.getElementById("row0key0").innerText = row0key0_caps_value;
+	document.getElementById("row0key1").innerText = row0key1_caps_value;
+	document.getElementById("row0key2").innerText = row0key2_caps_value;
+	document.getElementById("row0key3").innerText = row0key3_caps_value;
+	document.getElementById("row0key4").innerText = row0key4_caps_value;
+	document.getElementById("row0key5").innerText = row0key5_caps_value;
+	document.getElementById("row0key6").innerText = row0key6_caps_value;
+	document.getElementById("row0key7").innerText = row0key7_caps_value;
+	document.getElementById("row0key8").innerText = row0key8_caps_value;
+	document.getElementById("row0key9").innerText = row0key9_caps_value;
+	document.getElementById("row0key10").innerText = row0key10_caps_value;
+	document.getElementById("row0key11").innerText = row0key11_caps_value;
+	document.getElementById("row0key12").innerText = row0key12_caps_value;
+
+	document.getElementById("row1key0").innerText = row1key0_caps_value;
+	document.getElementById("row1key1").innerText = row1key1_caps_value;
+	document.getElementById("row1key2").innerText = row1key2_caps_value;
+	document.getElementById("row1key3").innerText = row1key3_caps_value;
+	document.getElementById("row1key4").innerText = row1key4_caps_value;
+	document.getElementById("row1key5").innerText = row1key5_caps_value;
+	document.getElementById("row1key6").innerText = row1key6_caps_value;
+	document.getElementById("row1key7").innerText = row1key7_caps_value;
+	document.getElementById("row1key8").innerText = row1key8_caps_value;
+	document.getElementById("row1key9").innerText = row1key9_caps_value;
+	document.getElementById("row1key10").innerText = row1key10_caps_value;
+	document.getElementById("row1key11").innerText = row1key11_caps_value;
+
+	document.getElementById("row2key0").innerText = row2key0_caps_value;
+	document.getElementById("row2key1").innerText = row2key1_caps_value;
+	document.getElementById("row2key2").innerText = row2key2_caps_value;
+	document.getElementById("row2key3").innerText = row2key3_caps_value;
+	document.getElementById("row2key4").innerText = row2key4_caps_value;
+	document.getElementById("row2key5").innerText = row2key5_caps_value;
+	document.getElementById("row2key6").innerText = row2key6_caps_value;
+	document.getElementById("row2key7").innerText = row2key7_caps_value;
+	document.getElementById("row2key8").innerText = row2key8_caps_value;
+	document.getElementById("row2key9").innerText = row2key9_caps_value;
+	document.getElementById("row2key10").innerText = row2key10_caps_value;
+
+	document.getElementById("row3key0").innerText = row3key0_caps_value;
+	document.getElementById("row3key1").innerText = row3key1_caps_value;
+	document.getElementById("row3key2").innerText = row3key2_caps_value;
+	document.getElementById("row3key3").innerText = row3key3_caps_value;
+	document.getElementById("row3key4").innerText = row3key4_caps_value;
+	document.getElementById("row3key5").innerText = row3key5_caps_value;
+	document.getElementById("row3key6").innerText = row3key6_caps_value;
+	document.getElementById("row3key7").innerText = row3key7_caps_value;
+	document.getElementById("row3key8").innerText = row3key8_caps_value;
+	document.getElementById("row3key9").innerText = row3key9_caps_value;
+}
+
+function changeKeysToUnshiftedValues()
+{
+	document.getElementById("row0key0").innerText = row0key0_value;
+	document.getElementById("row0key1").innerText = row0key1_value;
+	document.getElementById("row0key2").innerText = row0key2_value;
+	document.getElementById("row0key3").innerText = row0key3_value;
+	document.getElementById("row0key4").innerText = row0key4_value;
+	document.getElementById("row0key5").innerText = row0key5_value;
+	document.getElementById("row0key6").innerText = row0key6_value;
+	document.getElementById("row0key7").innerText = row0key7_value;
+	document.getElementById("row0key8").innerText = row0key8_value;
+	document.getElementById("row0key9").innerText = row0key9_value;
+	document.getElementById("row0key10").innerText = row0key10_value;
+	document.getElementById("row0key11").innerText = row0key11_value;
+	document.getElementById("row0key12").innerText = row0key12_value;
+
+	document.getElementById("row1key0").innerText = row1key0_value;
+	document.getElementById("row1key1").innerText = row1key1_value;
+	document.getElementById("row1key2").innerText = row1key2_value;
+	document.getElementById("row1key3").innerText = row1key3_value;
+	document.getElementById("row1key4").innerText = row1key4_value;
+	document.getElementById("row1key5").innerText = row1key5_value;
+	document.getElementById("row1key6").innerText = row1key6_value;
+	document.getElementById("row1key7").innerText = row1key7_value;
+	document.getElementById("row1key8").innerText = row1key8_value;
+	document.getElementById("row1key9").innerText = row1key9_value;
+	document.getElementById("row1key10").innerText = row1key10_value;
+	document.getElementById("row1key11").innerText = row1key11_value;
+
+	document.getElementById("row2key0").innerText = row2key0_value;
+	document.getElementById("row2key1").innerText = row2key1_value;
+	document.getElementById("row2key2").innerText = row2key2_value;
+	document.getElementById("row2key3").innerText = row2key3_value;
+	document.getElementById("row2key4").innerText = row2key4_value;
+	document.getElementById("row2key5").innerText = row2key5_value;
+	document.getElementById("row2key6").innerText = row2key6_value;
+	document.getElementById("row2key7").innerText = row2key7_value;
+	document.getElementById("row2key8").innerText = row2key8_value;
+	document.getElementById("row2key9").innerText = row2key9_value;
+	document.getElementById("row2key10").innerText = row2key10_value;
+
+	document.getElementById("row3key0").innerText = row3key0_value;
+	document.getElementById("row3key1").innerText = row3key1_value;
+	document.getElementById("row3key2").innerText = row3key2_value;
+	document.getElementById("row3key3").innerText = row3key3_value;
+	document.getElementById("row3key4").innerText = row3key4_value;
+	document.getElementById("row3key5").innerText = row3key5_value;
+	document.getElementById("row3key6").innerText = row3key6_value;
+	document.getElementById("row3key7").innerText = row3key7_value;
+	document.getElementById("row3key8").innerText = row3key8_value;
+	document.getElementById("row3key9").innerText = row3key9_value;
+}
+
+
+function onKeyDown(e)
+{
+	// Handle pressing of caps lock key.
+	if (e.getModifierState('CapsLock'))
+	{
+		if (!capsLock)
+		{
+			toggleCapsLock();
+		}
+	}
+	else
+	{
+		if (capsLock)
+		{
+			toggleCapsLock();
+		}
+	}
+
+	// Handle pressing of shift keys
+	if (e.code === "ShiftRight"
+	 || e.code === "ShiftLeft")
+	{
+		changeKeysToShiftedValues();
+	}
+	console.log("onKeyDown:");
+	console.log(e);
+}
+
+function onKeyUp(e)
+{
+	if (e.code === "ShiftRight"
+	 || e.code === "ShiftLeft")
+	{
+		changeKeysToUnshiftedValues();
+	}
+
+	console.log("onKeyUp:");
+	console.log(e);	
+}
+
+function pressShift()
+{
+	permanentShift = false;
+	changeKeysToShiftedValues();
+}
+
+function toggleCapsLock()
+{
+	if (capsLock)
+	{
+		capsLock = false;
+		changeKeysToUnshiftedValues();
+	}
+	else
+	{
+		capsLock = true;
+		changeKeysToCapsValues();
+	}
+}
+
+function printToOutput(output)
+{
+	document.getElementById('outputText').value += output; 
+}
+
+function deleteFinalCharacter()
+{
+	const lengthOfText = log.value.length;
+	log.value = log.value.substring(0, lengthOfText - 1);
+}
+
+function clearText()
+{
+	log.value = "";
+}
+
+function printToOutputFrom(textSourceId)
+{
+	printToOutput(document.getElementById(textSourceId).textContent);
+	nextShiftValue();
+}
+
+function nextShiftValue()
+{
+	if (!capsLock && !permanentShift)
+	{
+		changeKeysToUnshiftedValues();
+	}
+}
+
+function fromDvorakToQwerty(keyCode, shiftKey) 
+{
+	if (keyCode == "Space")
+	{
+		return " ";
+	}
+	else if (keyCode == "Enter")
+	{
+		return "\n";
+	}
+	else if (keyCode == "KeyQ")
+	{
+		if (shiftKey)
+		{
+			return row1key0_shifted_value;
+		}
+		else
+		{
+			return row1key0_value;
+		}
+	}
+	else if (keyCode == "KeyW")
+	{
+		if (shiftKey)
+		{
+			return row1key1_shifted_value;
+		}
+		else
+		{
+			return row1key1_value;
+		}
+	}
+	else if (keyCode == "KeyE")
+	{
+		if (shiftKey)
+		{
+			return row1key2_shifted_value;
+		}
+		else
+		{
+			return row1key2_value;
+		}
+	}
+	else if (keyCode == "KeyR")
+	{
+		if (shiftKey)
+		{
+			return row1key3_shifted_value;
+		}
+		else
+		{
+			return row1key3_value;
+		}
+	}
+	else if (keyCode == "KeyT")
+	{
+		if (shiftKey)
+		{
+			return row1key4_shifted_value;
+		}
+		else
+		{
+			return row1key4_value;
+		}
+	}
+	else if (keyCode == "KeyY")
+	{
+		if (shiftKey)
+		{
+			return row1key5_shifted_value;
+		}
+		else
+		{
+			return row1key5_value;
+		}
+	}
+	else if (keyCode == "KeyU")
+	{
+		if (shiftKey)
+		{
+			return row1key6_shifted_value;
+		}
+		else
+		{
+			return row1key6_value;
+		}
+	}
+	else if (keyCode == "KeyI")
+	{
+		if (shiftKey)
+		{
+			return row1key7_shifted_value;
+		}
+		else
+		{
+			return row1key7_value;
+		}
+	}
+	else if (keyCode == "KeyO")
+	{
+		if (shiftKey)
+		{
+			return row1key8_shifted_value;
+		}
+		else
+		{
+			return row1key8_value;
+		}
+	}
+	else if (keyCode == "KeyP")
+	{
+		if (shiftKey)
+		{
+			return row1key9_shifted_value;
+		}
+		else
+		{
+			return row1key9_value;
+		}
+	}
+	else if (keyCode == "BracketLeft")
+	{
+		if (shiftKey)
+		{
+			return row1key10_shifted_value;
+		}
+		else
+		{
+			return row1key10_value;
+		}
+	}
+	else if (keyCode == "BracketRight")
+	{
+		if (shiftKey)
+		{
+			return row1key11_shifted_value;
+		}
+		else
+		{
+			return row1key11_value;
+		}
+	}
+	else if (keyCode == "Backslash")
+	{
+		if (shiftKey)
+		{
+			return row1key12_shifted_value;
+		}
+		else
+		{
+			return row1key12_value;
+		}
+	}
+	else if (keyCode == "KeyA")
+	{
+		if (shiftKey)
+		{
+			return row2key0_shifted_value;
+		}
+		else
+		{
+			return row2key0_value;
+		}
+	}
+	else if (keyCode == "KeyS")
+	{
+		if (shiftKey)
+		{
+			return row2key1_shifted_value;
+		}
+		else
+		{
+			return row2key1_value;
+		}
+	}
+	else if (keyCode == "KeyD")
+	{
+		if (shiftKey)
+		{
+			return row2key2_shifted_value;
+		}
+		else
+		{
+			return row2key2_value;
+		}
+	}
+	else if (keyCode == "KeyF")
+	{
+		if (shiftKey)
+		{
+			return row2key3_shifted_value;
+		}
+		else
+		{
+			return row2key3_value;
+		}
+	}
+	else if (keyCode == "KeyG")
+	{
+		if (shiftKey)
+		{
+			return row2key4_shifted_value;
+		}
+		else
+		{
+			return row2key4_value;
+		}
+	}
+	else if (keyCode == "KeyH")
+	{
+		if (shiftKey)
+		{
+			return row2key5_shifted_value;
+		}
+		else
+		{
+			return row2key5_value;
+		}
+	}
+	else if (keyCode == "KeyJ")
+	{
+		if (shiftKey)
+		{
+			return row2key6_shifted_value;
+		}
+		else
+		{
+			return row2key6_value;
+		}
+	}
+	else if (keyCode == "KeyK")
+	{
+		if (shiftKey)
+		{
+			return row2key7_shifted_value;
+		}
+		else
+		{
+			return row2key7_value;
+		}
+	}
+	else if (keyCode == "KeyL")
+	{
+		if (shiftKey)
+		{
+			return row2key8_shifted_value;
+		}
+		else
+		{
+			return row2key8_value;
+		}
+	}
+	else if (keyCode == "Semicolon")
+	{
+		if (shiftKey)
+		{
+			return row2key9_shifted_value;
+		}
+		else
+		{
+			return row2key9_value;
+		}
+	}
+	else if (keyCode == "Quote")
+	{
+		if (shiftKey)
+		{
+			return row2key10_shifted_value;
+		}
+		else 
+		{
+			return row2key10_value;
+		}
+	}
+	else if (keyCode == "KeyZ")
+	{
+		if (shiftKey)
+		{
+			return row3key0_shifted_value;
+		}
+		else
+		{
+			return row3key0_value;
+		}
+	}
+	else if (keyCode == "KeyX")
+	{
+		if (shiftKey)
+		{
+			return row3key1_shifted_value;
+		}
+		else
+		{
+			return row3key1_value;
+		}
+	}
+	else if (keyCode == "KeyC")
+	{
+		if (shiftKey)
+		{
+			return row3key2_shifted_value;
+		}
+		else
+		{
+			return row3key2_value;
+		}
+	}
+	else if (keyCode == "KeyV")
+	{
+		if (shiftKey)
+		{
+			return row3key3_shifted_value;
+		}
+		else
+		{
+			return row3key3_value;
+		}
+	}
+	else if (keyCode == "KeyB")
+	{
+		if (shiftKey)
+		{
+			return row3key4_shifted_value;
+		}
+		else 
+		{
+			return row3key4_value;
+		}
+	}
+	else if (keyCode == "KeyN")
+	{
+		if (shiftKey)
+		{
+			return row3key5_shifted_value;
+		}
+		else
+		{
+			return row3key5_value;
+		}
+	}
+	else if (keyCode == "KeyM")
+	{
+		if (shiftKey)
+		{
+			return row3key6_shifted_value;
+		}
+		else
+		{
+			return row3key6_value;
+		}
+	}
+	else if (keyCode == "Comma")
+	{
+		if (shiftKey)
+		{
+			return row3key7_shifted_value;
+		}
+		else
+		{
+			return row3key7_value;
+		}
+	}
+	else if (keyCode == "Period")
+	{
+		if (shiftKey)
+		{
+			return row3key8_shifted_value;
+		}
+		else
+		{
+			return row3key8_value;
+		}
+	}
+	else if (keyCode == "Slash")
+	{
+		if (shiftKey)
+		{
+			return row3key9_shifted_value;
+		}
+		else
+		{
+			return row3key9_value;
+		}
+	}
+	else if (keyCode == "Backquote")
+	{
+		if (shiftKey)
+		{
+			return row0key0_shifted_value;
+		}
+		else
+		{
+			return row0key0_value;
+		}
+	}
+	else if (keyCode == "Digit1")
+	{
+		if (shiftKey)
+		{
+			return row0key1_shifted_value;
+		}
+		else
+		{
+			return row0key1_value;
+		}
+	}
+	else if (keyCode == "Digit2")
+	{
+		if (shiftKey)
+		{
+			return row0key2_shifted_value;
+		}
+		else
+		{
+			return row0key2_value;
+		}
+	}
+	else if (keyCode == "Digit3")
+	{
+		if (shiftKey)
+		{
+			return row0key3_shifted_value;
+		}
+		else
+		{
+			return row0key3_value;
+		}
+	}
+	else if (keyCode == "Digit4")
+	{
+		if (shiftKey)
+		{
+			return row0key4_shifted_value;
+		}
+		else
+		{
+			return row0key4_value;
+		}
+	}
+	else if (keyCode == "Digit5")
+	{
+		if (shiftKey)
+		{
+			return row0key5_shifted_value;
+		}
+		else
+		{
+			return row0key5_value;
+		}
+	}
+	else if (keyCode == "Digit6")
+	{
+		if (shiftKey)
+		{
+			return row0key6_shifted_value;
+		}
+		else
+		{
+			return row0key6_value;
+		}
+	}
+	else if (keyCode == "Digit7")
+	{
+		if (shiftKey)
+		{
+			return row0key7_shifted_value;
+		}
+		else
+		{
+			return row0key7_value;
+		}
+	}
+	else if (keyCode == "Digit8")
+	{
+		if (shiftKey)
+		{
+			return row0key8_shifted_value;
+		}
+		else
+		{
+			return row0key8_value;
+		}
+	}
+	else if (keyCode == "Digit9")
+	{
+		if (shiftKey)
+		{
+			return row0key9_shifted_value;
+		}
+		else
+		{
+			return row0key9_value;
+		}
+	}
+	else if (keyCode == "Digit0")
+	{
+		if (shiftKey)
+		{
+			return row0key10_shifted_value;
+		}
+		else
+		{
+			return row0key10_value;
+		}
+	}
+	else if (keyCode == "Minus")
+	{
+		if (shiftKey)
+		{
+			return row0key11_shifted_value;
+		}
+		else
+		{
+			return row0key11_value;
+		}
+	}
+	else if (keyCode == "Equal")
+	{
+		if (shiftKey)
+		{
+			return row0key12_shifted_value;
+		} 
+		else
+		{
+			return row0key12_value;
+		}
+	}
+	else
+	{
+		return keyCode;
+	}
+}
+
+function logKey(e)
+{
+	console.log(e);
+	var output = fromDvorakToQwerty(e.code, e.shiftKey);
+	printToOutput(output);
+}
+
+function copyTextIntoClipboard()
+{
+
+	/* Select the text field */
+	log.select(); 
+	log.setSelectionRange(0, 99999); /* For mobile devices */
+
+	/* Copy the text inside the text field */
+	document.execCommand("copy");
+
+}
+		</script>
+	</body>
+</html>

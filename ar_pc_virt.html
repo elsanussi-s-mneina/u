@@ -1,26 +1,3 @@
-<!--
-	MIT License
-
-Copyright (c) 2021 Elsanussi S. Mneina
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
--->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -29,15 +6,15 @@ SOFTWARE.
 		<style>
 		button
 		{
-			min-width: 4em;
-			min-height: 4em;
-			font-size: 15px;
+			min-width: 3em;
+			min-height: 3em;
+			font-size: 25px;
 			padding:0px;
 		}
 		</style>
 	</head>
 	<body>
-		<h1>Arabic (PC) Virtual Keyboard</h1>
+		<h1>Arabic (PC) Virtual Keyboard لَوْحَةُ ٱلْمَفَاتِيْحِ ٱلْعَرَبِيَّةُ </h1>
 		<p>Type as though you have an Arabic (PC) keyboard set up in the following text area.</p>
 		<textarea disabled id="outputText" rows="5" cols="50" aria-live="polite" dir="rtl" style="min-height: 40px; padding: 7px; font-size:25px; color:black;"></textarea>
 		<!-- We use the aria-live attribute so that screenreaders will read out changes to the textarea when they occur. This is useful for accessibility. -->
@@ -116,13 +93,17 @@ SOFTWARE.
 			<button id="spaceBar" style="margin-left: 10em; width: 25em;" onclick="printToOutput(' '); nextShiftValue();"> (space) </button>
 		</p>
 
+		<!-- The following row are for characters not on the usual layers for the Arabic (PC) keyboard layout.-->
+		<p id="extraRow" style="margin-top:4em;">
+		</p>
 
-		<footer>Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a> Last updated on 2021-02-06 <a href="https://github.com/elsanussi-s-mneina/dvorak_virtual_keyboard_in_html_javascript">v0.7.0</a></footer>
+
+		<footer>Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a> Last updated on 2021-02-11<a href="https://github.com/elsanussi-s-mneina/arabic_pc_virtual_keyboard_in_html_javascript">v0.8.0</a></footer>
 
 		<script>
-			const log = document.getElementById('outputText');
-			var permanentShift = false;
-			var capsLock = false;
+const log = document.getElementById('outputText');
+var permanentShift = false;
+var capsLock = false;
 
 document.addEventListener('keypress', logKey);
 document.addEventListener('keydown', onKeyDown);
@@ -146,6 +127,30 @@ const capsText = "٫ 1 2 3 4 5 6 7 8 9 0 - = " +
   "ئ ء ؤ ر لا ى ة و ز ظ";
 
 const capsTextValues = capsText.split(' ');
+
+
+const diacriticCharacterText = "بَ بِ بُ بً بٍ بٌ بْ بّ";
+
+const diacriticAndCarrierCharacterValues = diacriticCharacterText.split(' ');
+const diacriticCharacterValues = [];
+
+ // skip the carrier character to keep only the diacritic
+for (var i = 0; i < diacriticAndCarrierCharacterValues.length; i++)
+{
+	current = diacriticAndCarrierCharacterValues[i].substr(1);
+	diacriticCharacterValues.push(current);
+}
+
+placeExtraButtons(diacriticCharacterValues, "diacritic");
+
+const extraDiacriticsCharacters = " ٰ";
+const extraDiacriticCharacterValues = extraDiacriticsCharacters.split(' ');
+placeExtraButtons(extraDiacriticCharacterValues, "extraDiacritic");
+
+const extraFullCharacters = "چ ڟ ڛ ڞ پ ڤ گ ژ ڬ ڢ ڨ ڠ ں ک ٱ";
+const extraFullCharacterValues = extraFullCharacters.split(' ');
+
+placeExtraButtons(extraFullCharacterValues, "extraFull");
 
 const row0key0_value = unshiftedTextValues[0];
 const row0key1_value = unshiftedTextValues[1];
@@ -1117,6 +1122,61 @@ function copyTextIntoClipboard()
 	document.execCommand("copy");
 
 }
+
+function placeExtraButtons(buttonOutputs, idPrefix)
+{
+	var count = 0;
+
+	for (var i = 0; i < buttonOutputs.length; i++)
+	{
+		output = buttonOutputs[i];
+		if (output != "") // Prevent extra empty key.
+		{
+			var button = createExtraButton(output, idPrefix + count);
+			count++;
+			document.getElementById("extraRow").appendChild(button);
+		}
+	}
+}
+
+function createExtraButton(buttonOutput, buttonId)
+{
+	extraButton = document.createElement('button');
+
+	extraButton['id'] = buttonId;
+	extraButton.style = "font-size: 49px; margin: 2px; min-width:1em";
+	// Make the button put some output.
+	extraButton.onclick = function(){ printToOutput(buttonOutput); nextShiftValue();};
+
+	// Put some text on the button so the user knows what text it puts.
+	extraButton.innerText = buttonOutput;
+
+	return extraButton;
+}
 		</script>
 	</body>
 </html>
+
+<!--
+	MIT License
+
+Copyright (c) 2021 Elsanussi S. Mneina
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->

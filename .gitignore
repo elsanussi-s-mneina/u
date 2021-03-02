@@ -1,3 +1,7 @@
 # Ignore Visual Studio Code IDE files
 /.vscode
 .DS_Store
+._index.html
+._iso233QuickTypist.html
+._malteseQuickTypist.html
+._spanishQuickTypist.html

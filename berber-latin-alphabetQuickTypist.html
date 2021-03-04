@@ -9,14 +9,14 @@
 <body onload="setUp()" style="font-family: times">
 	<!-- We use times because Courier font does not display left half ring and right half ring correctly. It confuses them.-->
 	<h1>Type and Replace: Berber Latin Alphabet</h1>
-	<p>This is a page making it easier to type characters required for typing Berber Latin Alphabet. This page is intended to be useful when a person wants to type Berber Latin Alphabet but does not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the button labelled "Replace".</p>	
+	<p>This is a page making it easier to type characters required for typing Berber Latin Alphabet. This page is intended to be useful when you want to type Berber Latin Alphabet but do not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the button labelled "Replace".</p>	
 	<p>This page can be downloaded, and after downloading can run on a computer even without internet.</p>
 	
 	<h2>Type text</h2>
 	<div>
 		<label for="userInputBox">Type Text into following box:</label>
 	</div>
-	<textarea id="userInputBox" oninput="reactToUserTypingCharacter()" cols="50" rows="10" aria-live="assertive" style="font-family: times; font-size: large"></textarea>
+	<textarea id="userInputBox" oninput="reactToUserTypingCharacter()" cols="50" rows="10" aria-live="assertive" style="font-family: times; font-size: large; padding: 0.5em"></textarea>
 	<h2>Replace:</h2>
 	<button onclick="transformCharacters()">Replace</button>
 
@@ -27,9 +27,16 @@
 
 	</div>
 
+	<!-- The following will be populated with any extra information for our users. -->
+	<button onclick="viewExcelFormula()">Get Spreadsheet Formula to do this.</button>
+	<button onclick="viewPythonFormula()">Get Terminal Command to do this.</button>
+
+	<div id="extraGoodies" style="font-family: times; font-size: large">
+	</div>
+
 	<footer>
-		<p><a style="font-size: x-small; margin-left: 5em" href="https://github.com/elsanussi-s-mneina/type-and-replace-html-js">Get source code and documentation: v1.10, (2021-03-01). Made by Elsanussi Mneina</a></p>
-	</footer>  
+		<p><a style="font-size: x-small; margin-left: 5em" href="https://github.com/elsanussi-s-mneina/type-and-replace-html-js">Get source code and documentation: Type and Replace v1.22, (2021-03-04). Made by Elsanussi Mneina</a></p>
+	</footer>
 
 	<script>
 		normalizationLock = false;
@@ -70,10 +77,66 @@
 			]
 		;
 
+		function createSpreadsheetFormula()
+		{
+			var extraGoodies = document.getElementById("extraGoodies");
+
+			var spreadsheetFormula = "B2";
+
+			for (var i = 0; i < replacements.length; i++)
+			{
+				spreadsheetFormula = "SUBSTITUTE(" + spreadsheetFormula + ", \"" + replacements[i][0] + "\", \"" + replacements[i][1] + "\")";
+			}
+
+			extraGoodies.innerHTML = "<h3>Equivalent Spreadsheet Formula</h3><p>The worksheet (Excel, LibreOffice) formula for converting text from cell B2 is =" + spreadsheetFormula + "</p>";
+		}
+
+
+		function encodeUnicodeString(aString)
+		{
+			outputString = "";
+			for (var i = 0; i < aString.length; i++)
+			{
+				var unicodeValueString = aString.codePointAt(i).toString(16);
+
+				while (unicodeValueString.length < 4)
+				{
+					unicodeValueString = "0" + unicodeValueString;
+				}
+				outputString += "\\u" + unicodeValueString;
+			}
+
+			return outputString;
+		}
+
+		function createPythonFormula()
+		{
+			var pythonFormula = ""
+
+			for (var i = 0; i < replacements.length; i++)
+			{
+				pythonFormula = pythonFormula + ".replace( \\\"" + encodeUnicodeString(replacements[i][0]) + "\\\", \\\"" + encodeUnicodeString(replacements[i][1]) + "\\\")";
+			}
+
+			pythonFormula = "import sys; print(sys.stdin.read()" + pythonFormula + ")";
+			var terminalFormula = "python3 -c \"" + pythonFormula + "\"" + " < ./inputFile.txt > ./outputFile.txt"
+			extraGoodies.innerHTML = "<h3>Equivalent Terminal Command using Python 3</h3><p>" + terminalFormula + "</p>";
+
+		}
+
+		function viewExcelFormula()
+		{
+			createSpreadsheetFormula();
+		}
+
+		function viewPythonFormula()
+		{
+			createPythonFormula();
+		}
+
 		function setUp()
 		{
 			setUpLegend();
-
 			// The following call ensures that the
 			// checkbox and normalization lock
 			// do not become out of sync after a page refresh.
@@ -100,30 +163,28 @@
 		function transformCharacters()
 		{
 			var oldInput = document.getElementById("userInputBox").value;
-			
-			if (oldInput.length >= 2)
+		
+			var newInput = "";
+			var replacedCurrentChar = false;
+			for (var i = 0; i < oldInput.length; i++)
 			{
-				var newInput = "";
-				var replacedCurrentChar = false;
-				for (var i = 0; i < oldInput.length; i++)
+				replacedCurrentChar = false;
+				for (var j = 0; j < replacements.length && !replacedCurrentChar; j++)					
 				{
-					replacedCurrentChar = false;
-					for (var j = 0; j < replacements.length && !replacedCurrentChar; j++)					
+					if (oldInput.substring(i, i + replacements[j][0].length) == replacements[j][0])
 					{
-						if (oldInput.substring(i, i + replacements[j][0].length) == replacements[j][0])
-						{
-							newInput += replacements[j][1];
-							i += replacements[j][0].length; // Skip as many characters as we read in.
-							replacedCurrentChar = true;
-						}
-					}
-					if (!replacedCurrentChar)
-					{
-						newInput += oldInput.charAt(i);
+						newInput += replacements[j][1];
+						i += replacements[j][0].length; // Skip as many characters as we read in.
+						replacedCurrentChar = true;
 					}
 				}
-				document.getElementById("userInputBox").value = newInput;
+				if (!replacedCurrentChar)
+				{
+					newInput += oldInput.charAt(i);
+				}
 			}
+			document.getElementById("userInputBox").value = newInput;
+		
 		}
 
 		// Some users may prefer seeing the characters change as they type.

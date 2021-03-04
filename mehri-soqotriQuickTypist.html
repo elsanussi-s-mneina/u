@@ -4,12 +4,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-	<title>Type and Replace: Maltese</title>
+	<title>Type and Replace: Mehri and Soqotri السقطرية والمهرية</title>
 </head>
 <body onload="setUp()" style="font-family: times">
 	<!-- We use times because Courier font does not display left half ring and right half ring correctly. It confuses them.-->
-	<h1>Type and Replace: Maltese</h1>
-	<p>This is a page making it easier to type characters required for typing Maltese. This page is intended to be useful when you want to type Maltese but do not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the button labelled "Replace".</p>	
+	<h1>Type and Replace: Mehri and Soqotri السقطرية والمهرية</h1>
+	<p>This is a page making it easier to type characters required for typing Mehri and Soqotri السقطرية والمهرية. This page is intended to be useful when you want to type Mehri and Soqotri السقطرية والمهرية but do not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the button labelled "Replace".</p>	
 	<p>This page can be downloaded, and after downloading can run on a computer even without internet.</p>
 	
 	<h2>Type text</h2>
@@ -44,20 +44,21 @@
 		
 		replacements = 
 			[
-			// See: https://en.wikipedia.org/wiki/Maltese_language
-			// Ċ ċ
-			// Ġ ġ
-			// Ħ ħ
-			// Ż ż
-			["C'", "Ċ"],
-			["c'", "ċ"],
-			["G'", "Ġ"],
-			["g'", "ġ"], 
-			["H'", "Ħ"],
-			["h'", "ħ"],
-			["Z'", "Ż"],
-			["z'", "ż"]
+			// See the wikipedia page for the special characters
+			// needed for Modern South Arabian languages: https://en.wikipedia.org/wiki/Mehri_language
+			["\u062B\u062B\u062B", "\u069B"], // ARABIC LETTER THEH thrice, becomes ARABIC LETTER SEEN WITH THREE DOTS BELOW
+			["\u0636\u0636\u0636", "\u069E"], // ARABIC LETTER DAD thrice, becomes ARABIC LETTER SAD WITH THREE DOTS ABOVE
+			["\u0638\u0638\u0638", "\u069F"], // ARABIC LETTER ZAH thrice, becomes ARABIC LETTER DAD WITH THREE DOTS ABOVE
+			["\u0630\u0630\u0630", "\u0686"], // ARABIC LETTER THAL thrice, becomes ARABIC LETTER TCHEH 
+			["\u064A\u064A\u064A", "\u200E"], // ARABIC LETTER YEH thrice, becomesARABIC LETTER YEH WITH SMALL V
+			["\u062F\u062F\u062F", "\u068C"], // ARABIC LETTER DAL thrice, becomes ARABIC LETTER DAHAL
+			["\u0628\u0628\u0628", "\u067E"], // ARABIC LETTER BEH thrice, becomes ARABIC LETTER PEH
+
+			// The following letter is needed for Soqotri.
+			// https://en.wikipedia.org/wiki/Soqotri_language
+			["\u0644\u0644\u0644", "\u06B8"] // ARABIC LETTER LAM thrice, becomes ARABIC LETTER LAM WITH THREE DOTS BELOW
 			];
+
 		;
 
 		function createSpreadsheetFormula()

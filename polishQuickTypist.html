@@ -4,12 +4,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-	<title>Type and Replace: Maltese</title>
+	<title>Type and Replace: Polish</title>
 </head>
 <body onload="setUp()" style="font-family: times">
 	<!-- We use times because Courier font does not display left half ring and right half ring correctly. It confuses them.-->
-	<h1>Type and Replace: Maltese</h1>
-	<p>This is a page making it easier to type characters required for typing Maltese. This page is intended to be useful when you want to type Maltese but do not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the button labelled "Replace".</p>	
+	<h1>Type and Replace: Polish</h1>
+	<p>This is a page making it easier to type characters required for typing Polish. This page is intended to be useful when you want to type Polish but do not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the button labelled "Replace".</p>	
 	<p>This page can be downloaded, and after downloading can run on a computer even without internet.</p>
 	
 	<h2>Type text</h2>
@@ -44,20 +44,29 @@
 		
 		replacements = 
 			[
-			// See: https://en.wikipedia.org/wiki/Maltese_language
-			// Ċ ċ
-			// Ġ ġ
-			// Ħ ħ
-			// Ż ż
-			["C'", "Ċ"],
-			["c'", "ċ"],
-			["G'", "Ġ"],
-			["g'", "ġ"], 
-			["H'", "Ħ"],
-			["h'", "ħ"],
-			["Z'", "Ż"],
-			["z'", "ż"]
+            // See: https://en.wikipedia.org/wiki/Polish_alphabet
+            // ą	ć	ę	ł	ń	ó	ś	ź	ż
+            // Ą	Ć	Ę	Ł	Ń	Ó	Ś	Ź	Ż
+			["a&'", "ą"],
+			["A&'", "Ą"],
+			["C&'", "Ć"],
+			["c&'", "ć"],
+            ["e&'", "ę"],
+			["E&'", "Ę"],
+			["l&'", "ł"], 
+			["L&'", "Ł"],
+			["n&'", "ń"], 
+			["N&'", "Ń"],
+			["O&'", "Ó"], 
+			["o&'", "ó"],
+			["S&'", "Ś"],
+			["s&'", "ś"], 
+			["Z&'", "Ź"],
+			["z&'", "ź"],
+			["Z&.", "Ż"],
+			["z&.", "ż"]
 			];
+
 		;
 
 		function createSpreadsheetFormula()

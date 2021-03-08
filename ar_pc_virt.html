@@ -98,7 +98,11 @@
 		</p>
 
 
-		<footer>Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a> Last updated on 2021-02-11<a href="https://github.com/elsanussi-s-mneina/arabic_pc_virtual_keyboard_in_html_javascript">v0.8.0</a></footer>
+		<footer>
+			Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a><br>
+			Last updated on 2021-03-08<br>
+			<a href="https://github.com/elsanussi-s-mneina/arabic_pc_virtual_keyboard_in_html_javascript">v0.8.1</a>
+		</footer>
 
 		<script>
 const log = document.getElementById('outputText');
@@ -505,6 +509,11 @@ function onKeyDown(e)
 	{
 		changeKeysToShiftedValues();
 	}
+	else if (e.code == "Backspace")
+	{
+		deleteFinalCharacter();
+	}
+
 	console.log("onKeyDown:");
 	console.log(e);
 }
@@ -546,10 +555,26 @@ function printToOutput(output)
 	document.getElementById('outputText').value += output; 
 }
 
+function lastTwoCharactersAreForLineBreak(someText)
+{
+	const lastTwoChars = someText.substring(someText.length - 2);
+	return lastTwoChars == "\r\n" || lastTwoChars == "\n\r";
+}
+
 function deleteFinalCharacter()
 {
 	const lengthOfText = log.value.length;
-	log.value = log.value.substring(0, lengthOfText - 1);
+	
+	
+	let deletionCount = 1; // How many characters to delete.
+	if (lastTwoCharactersAreForLineBreak(log.value))
+	{
+		// Line break is implemented as two characters,
+		// so delete both characters.
+		deletionCount = 2;
+	}
+
+	log.value = log.value.substring(0, lengthOfText - deletionCount);
 }
 
 function clearText()
@@ -571,7 +596,7 @@ function nextShiftValue()
 	}
 }
 
-function fromDvorakToQwerty(keyCode, shiftKey) 
+function convertKeyboardStateToUnicodeCharacter(keyCode, shiftKey) 
 {
 	if (keyCode == "Space")
 	{
@@ -1107,9 +1132,10 @@ function fromDvorakToQwerty(keyCode, shiftKey)
 function logKey(e)
 {
 	console.log(e);
-	var output = fromDvorakToQwerty(e.code, e.shiftKey);
+	var output = convertKeyboardStateToUnicodeCharacter(e.code, e.shiftKey);
 	printToOutput(output);
 }
+
 
 function copyTextIntoClipboard()
 {

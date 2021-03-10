@@ -29,11 +29,11 @@ SOFTWARE.
 
 -->
 
-<html lang="en">
+<html lang="ar">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
-	<title>Basic Arabic Diacritic Remover</title>
+	<title>الحاذف البسيط للتشكيل</title>
 	<script>
 		var EXAMPLE_TEXT = 'شُكْرًا جَزِيْلًا \n تُوْجَدْ شَدَّةٌ، وَفَتْحَةٌ عَلَى هَٰذِهِ ٱلوَرَقَةٍ ';
 
@@ -82,7 +82,7 @@ SOFTWARE.
 				{
 					// ARABIC SUKUN
 					// Unicode: U+0652
-				}	
+				}
 				else if (inputString[i] === "\u0670")
 				{
 					// ARABIC LETTER SUPERSCRIPT ALEF
@@ -122,27 +122,27 @@ SOFTWARE.
 	</script>
 </head>
 <body>
-	<h1>Basic Arabic Diacritic Remover: <span lang="ar"> الحاذف البسيط للتشكيل </span></h1>
+	<h1>الحاذف البسيط للتشكيل </span></h1>
 	<div role="form">
-		<label for="arabicInputTextArea"><h2>Input: <span lang="ar">المعطيات</span></h2></label>
-		<p>Paste or type diacritic text in the following text input area: ضع النص بالتشكيل في الصندوق التالي
+		<label for="arabicInputTextArea"><h2>المعطيات</h2></label>
+		<p>:ضع النص بالتشكيل في الصندوق التالي
 		<br>
-			<button onclick="placeExampleTextEventHandler();">Put Example ضِعْ	 مَثَلًا</button>
+			<button onclick="placeExampleTextEventHandler();"> ضِعْ مَثَلًا</button>
 		</p>
-		<textarea id="arabicInputTextArea" rows="4" cols="100" lang="ar" aria-live="assertive"></textarea>
+		<textarea id="arabicInputTextArea" rows="4" cols="100" lang="ar"></textarea>
 	
-		<h3>Options اختيارات</h3>
+		<h3> اختيارات</h3>
 		<input type="checkbox" id="keepFathatanCheckbox">
-		<label for="keepFathatanCheckbox"> Do not delete fatḥatān (suffix -an)	 diacritic. لا تحذف الفتحتين</label><br>
+		<label for="keepFathatanCheckbox">.لا تحذف الفتحتين</label><br>
 	
-		<h2>Actions أوامر</h2>
-		<button onclick="removeDiacriticsEventHandler();">Remove Diacritics احذف	 التشكيل</button>
+		<h2> أوامر</h2>
+		<button onclick="removeDiacriticsEventHandler();">احذف التشكيل</button>
 	
 	
-		<label for="arabicOutputTextArea"><h2>Results النتيجة</h2></label>
-		<textarea id="arabicOutputTextArea" rows="4" cols="100" lang="ar" aria-live="assertive"></textarea>
+		<h2><label for="arabicOutputTextArea"> احذف التشكيل</label></h2>
+		<textarea id="arabicOutputTextArea" rows="4" cols="100" aria-live="assertive"></textarea>
 	</div>
-	<footer><a href="https://github.com/elsanussi-s-mneina/">Elsanussi Mneina made this page. صنع هذه الصفحة السنوسي امنينة </a>
+	<footer><a href="https://github.com/elsanussi-s-mneina/"> صنع هذه الصفحة السنوسي امنينة </a>
 		<p><a href="https://github.com/elsanussi-s-mneina/basic-arabic-diacritic-remover-web-app">v1.5.0, (2021-03-10)</a></p>
 	</footer>
 </body>

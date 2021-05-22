@@ -3,13 +3,13 @@
 <html lang='en'>
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Type and Replace: ISO-233 Arabic Romanization</title>
 </head>
 <body onload="setUp()" style="font-family: times">
 	<!-- We use times because Courier font does not display left half ring and right half ring correctly. It confuses them.-->
 	<h1>Type and Replace: ISO-233 Arabic Romanization</h1>
-	<p>This is a page making it easier to type characters required for typing ISO-233 Arabic Romanization. This page is intended to be useful when you want to type ISO-233 Arabic Romanization but do not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the button labelled "Replace".</p>	
+	<p>This is a page making it easier to type characters required for typing ISO-233 Arabic Romanization. This page is intended to be useful when you want to type ISO-233 Arabic Romanization but do not have the correct keyboard setup. When you do not have a special keyboard layout, you can come to this page, read the legend on this page, type text in the textbox, and press the Replace button.</p>	
 	<p>This page can be downloaded, and after downloading can run on a computer even without internet.</p>
 	
 	<h2>Type text</h2>
@@ -35,7 +35,7 @@
 	</div>
 
 	<footer>
-		<p><a style="font-size: x-small; margin-left: 5em" href="https://github.com/elsanussi-s-mneina/type-and-replace-html-js">Get source code and documentation: Type and Replace v1.22, (2021-03-04). Made by Elsanussi Mneina</a></p>
+		<p><a style="font-size: x-small; margin-left: 5em" href="https://github.com/elsanussi-s-mneina/type-and-replace-html-js">Get source code and documentation: Type and Replace v1.24, (2021-05-21). Made by Elsanussi Mneina</a></p>
 	</footer>
 
 	<script>
@@ -175,10 +175,10 @@
 				replacedCurrentChar = false;
 				for (var j = 0; j < replacements.length && !replacedCurrentChar; j++)					
 				{
-					if (oldInput.substring(i, i + replacements[j][0].length) == replacements[j][0])
+					if (oldInput.substring(i, i + replacements[j][0].length) === replacements[j][0])
 					{
 						newInput += replacements[j][1];
-						i += replacements[j][0].length; // Skip as many characters as we read in.
+						i += replacements[j][0].length - 1; // Skip as many characters as we read in., we subtract 1 because the outer for loop will add one for us.
 						replacedCurrentChar = true;
 					}
 				}

@@ -2,6 +2,10 @@
 <html lang='en'>
 <head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="description" content="لوحة مفاتيح حاسوب شخصي Arabic (PC) Virtual Keyboard">
+		<meta name="keywords" content="Arabic, Keyboard Layout, Arabic, Virtual Keyboard, Type, عربي, لوحة مفاتيح">
+		<meta name="author" content="Elsanussi Mneina">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Arabic (PC) Virtual Keyboard</title>
 		<style>
 		button
@@ -100,8 +104,8 @@
 
 		<footer>
 			Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a><br>
-			Last updated on 2021-03-08<br>
-			<a href="https://github.com/elsanussi-s-mneina/arabic_pc_virtual_keyboard_in_html_javascript">v0.8.1</a>
+			Last updated on 2021-06-01<br>
+			<a href="https://github.com/elsanussi-s-mneina/arabic_pc_virtual_keyboard_in_html_javascript">v0.8.3</a>
 		</footer>
 
 		<script>
@@ -1122,6 +1126,10 @@ function convertKeyboardStateToUnicodeCharacter(keyCode, shiftKey)
 		{
 			return row0key12_value;
 		}
+	}
+	else if (keyCode === "Backspace")
+	{
+		return "";
 	}
 	else
 	{

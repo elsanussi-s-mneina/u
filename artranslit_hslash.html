@@ -26,80 +26,129 @@
 			font-family: 'Droid Arabic Kufi', serif;
 		}
 
+		.translitLegend
+		{
+			font-size: 20px;
+			background-color: black;
+		}
+
+		.translitLegend li
+		{
+			color: black;
+			list-style: none;
+			display: inline-block;
+			margin: 0.2em;
+			background-color: wheat;
+			padding: 0.4em;
+			border-radius: 0.3em;
+		}
+
 	</style>
 </head>
 <body>
 	<h1>Arabic Romanization (H-slash) System</h1>
 
+	<p>This web page demonstrates an Arabic Romanization system made by me, Elsanussi Mneina.
+		This romanization system was designed by starting from the Latin
+		orthography used for writing Maltese, and making various adjustments
+		to allow it to represent Arabic more faithfully. These adjustments
+		are necessary because Standard Arabic has more consonant phonemes than Maltese.
+	</p>
+	<p>
+		For more information about this transliteration system,
+		you may want to watch a <a href="https://youtu.be/6Bh2DuZoQ0Y?t=563">
+		short demo</a> at https://youtu.be/6Bh2DuZoQ0Y?t=563
+		where I briefly demonstrate an older version of this application.
+	</p>
+	<p>
+		Note that the H-slash Romanization system system for Arabic is not
+		standardized, nor does it have any official status. However, I have 
+		tried to make it more suitable than the usual adhoc systems that
+		are found in the wild. For this reason, it may not be suitable for all
+		purposes. Therefore this is best considered a hobby, or experimental
+		at this stage (both the software web application and the transliteration
+		system).
+
+		End of message.
+	</p>
+	<p>
+		Message written by Elsanussi Mneina on September 14, 2021.
+	</p>
 	<h2>Legend</h2>
-		<ul>
-			<li><span class="latin">q'</span> => <span class="arabic">ء</span></li>
-			<li><span class="latin">b</span> => <span class="arabic">ب</span></li>
-			<li><span class="latin">t</span> => <span class="arabic">ت</span></li>
-			<li><span class="latin">t'</span> => <span class="arabic">ث</span></li>
-			<li><span class="latin">ġ</span> => <span class="arabic">ج</span></li>
-			<li><span class="latin">hħ</span> => <span class="arabic">ح</span></li>
-			<li><span class="latin">jħ</span> => <span class="arabic">خ</span></li>
-			<li><span class="latin">d</span> => <span class="arabic">د</span></li>
-			<li><span class="latin">d'</span> => <span class="arabic">ذ</span></li>
-			<li><span class="latin">r</span> => <span class="arabic">ر</span></li>
-			<li><span class="latin">ż</span> => <span class="arabic">ز</span></li>
-			<li><span class="latin">s</span> => <span class="arabic">س</span></li>
-			<li><span class="latin">x</span> => <span class="arabic">ش</span></li>
-			<li><span class="latin">sħ</span> => <span class="arabic">ص</span></li>
-			<li><span class="latin">dħ</span> => <span class="arabic">ض</span></li>
-			<li><span class="latin">tħ</span> => <span class="arabic">ط</span></li>
-			<li><span class="latin">d'ħ</span> => <span class="arabic">ظ</span></li>
-			<li><span class="latin">għ</span> => <span class="arabic">ع</span></li>
-			<li><span class="latin">ġħ</span> => <span class="arabic">غ</span></li>
-			<li><span class="latin">f</span> => <span class="arabic">ف</span></li>
-			<li><span class="latin">qħ</span> => <span class="arabic">ق</span></li>
-			<li><span class="latin">k</span> => <span class="arabic">ك</span></li>
-			<li><span class="latin">l</span> => <span class="arabic">ل</span></li>
-			<li><span class="latin">m</span> => <span class="arabic">م</span></li>
-			<li><span class="latin">n</span> => <span class="arabic">ن</span></li>
-			<li><span class="latin">h</span> => <span class="arabic">ه</span></li>
-			<li><span class="latin">w</span> => <span class="arabic">و</span></li>
-			<li><span class="latin">j</span> => <span class="arabic">ي</span></li>
-			<li><span class="latin">ae</span> => <span class="arabic">ى</span></li>
-			<li><span class="latin">q'aa</span> => <span class="arabic">آ</span></li>
+		<ul class="translitLegend">
+			<li><span class="latin">q'</span> → <span class="arabic">ء</span></li>
+			<li><span class="latin">b</span> → <span class="arabic">ب</span></li>
+			<li><span class="latin">t</span> → <span class="arabic">ت</span></li>
+			<li><span class="latin">t'</span> → <span class="arabic">ث</span></li>
+			<li><span class="latin">ġ</span> → <span class="arabic">ج</span></li>
+			<li><span class="latin">hħ</span> → <span class="arabic">ح</span></li>
+			<li><span class="latin">jħ</span> → <span class="arabic">خ</span></li>
+			<li><span class="latin">d</span> → <span class="arabic">د</span></li>
+			<li><span class="latin">d'</span> → <span class="arabic">ذ</span></li>
+			<li><span class="latin">r</span> → <span class="arabic">ر</span></li>
+			<li><span class="latin">ż</span> → <span class="arabic">ز</span></li>
+			<li><span class="latin">s</span> → <span class="arabic">س</span></li>
+			<li><span class="latin">x</span> → <span class="arabic">ش</span></li>
+			<li><span class="latin">sħ</span> → <span class="arabic">ص</span></li>
+			<li><span class="latin">dħ</span> → <span class="arabic">ض</span></li>
+			<li><span class="latin">tħ</span> → <span class="arabic">ط</span></li>
+			<li><span class="latin">d'ħ</span> → <span class="arabic">ظ</span></li>
+			<li><span class="latin">għ</span> → <span class="arabic">ع</span></li>
+			<li><span class="latin">ġħ</span> → <span class="arabic">غ</span></li>
+			<li><span class="latin">f</span> → <span class="arabic">ف</span></li>
+			<li><span class="latin">q</span> → <span class="arabic">ق</span></li>
+			<li><span class="latin">k</span> → <span class="arabic">ك</span></li>
+			<li><span class="latin">l</span> → <span class="arabic">ل</span></li>
+			<li><span class="latin">m</span> → <span class="arabic">م</span></li>
+			<li><span class="latin">n</span> → <span class="arabic">ن</span></li>
+			<li><span class="latin">h</span> → <span class="arabic">ه</span></li>
+			<li><span class="latin">w</span> → <span class="arabic">و</span></li>
+			<li><span class="latin">j</span> → <span class="arabic">ي</span></li>
+			<li><span class="latin">ae</span> → <span class="arabic">ى</span></li>
+			<li><span class="latin">q'aa</span> → <span class="arabic">آ</span></li>
 		</ul>
 		<h3>Vowels, dipthongs, and syllables</h3>
-		<ul>
-			<li><span class="latin">ba</span> => <span class="arabic">بَ</span></li>
-			<li><span class="latin">bi</span> => <span class="arabic">بِ</span></li>
-			<li><span class="latin">bu</span> => <span class="arabic">بُ</span></li>
-			<li><span class="latin">baa</span> => <span class="arabic">بَا</span></li>
-			<li><span class="latin">bii</span> => <span class="arabic">بِيْ</span></li>
-			<li><span class="latin">buu</span> => <span class="arabic">بُوْ</span></li>
-			<li><span class="latin">bai</span> => <span class="arabic">بَيْ</span></li>
-			<li><span class="latin">bau</span> => <span class="arabic">بَوْ</span></li>
-			<li><span class="latin">ba·n</span> => <span class="arabic">بًا</span></li>
-			<li><span class="latin">bi·n</span> => <span class="arabic">بٍ</span></li>
-			<li><span class="latin">bu·n</span> => <span class="arabic">بٌ</span></li>
-			<li><span class="latin">ba·t</span> => <span class="arabic">بَة</span></li>
+		<ul class="translitLegend">
+			<li><span class="latin">ba</span> → <span class="arabic">بَ</span></li>
+			<li><span class="latin">bi</span> → <span class="arabic">بِ</span></li>
+			<li><span class="latin">bu</span> → <span class="arabic">بُ</span></li>
+			<li><span class="latin">baa</span> → <span class="arabic">بَا</span></li>
+			<li><span class="latin">bii</span> → <span class="arabic">بِيْ</span></li>
+			<li><span class="latin">buu</span> → <span class="arabic">بُوْ</span></li>
+			<li><span class="latin">bai</span> → <span class="arabic">بَيْ</span></li>
+			<li><span class="latin">bau</span> → <span class="arabic">بَوْ</span></li>
+			<li><span class="latin">ba-n</span> → <span class="arabic">بًا</span></li>
+			<li><span class="latin">bi-n</span> → <span class="arabic">بٍ</span></li>
+			<li><span class="latin">bu-n</span> → <span class="arabic">بٌ</span></li>
+			<li><span class="latin">ba-t</span> → <span class="arabic">بَة</span></li>
 		</ul>
 
 		<h2>Try it</h2>
 		<div>
-			<label for="arabicScriptText">Arabic Text:</label>
-			<textarea id="arabicScriptText" name="arabicScriptText" lang="ar" dir="rtl" cols="50" aria-live="assertive"></textarea>
-		</div>
-		<div>
-			<label for="latinScriptText">Latin Text:</label>
-			<textarea id="latinScriptText" name="latinScriptText" cols="50" aria-live="assertive"></textarea>
+			<br/>
 			<button onclick="document.getElementById('latinScriptText').value += 'ħ'; tryArabize();">ħ</button> 
 			<button onclick="document.getElementById('latinScriptText').value += 'ġ'; tryArabize();">ġ</button> 
 			<button onclick="document.getElementById('latinScriptText').value += 'ż'; tryArabize();">ż</button> 
+			<br/>
+			<label for="latinScriptText">Latin Text:</label>
+			<textarea id="latinScriptText" name="latinScriptText" cols="50" aria-live="assertive" spellcheck="false" placeholder="Enter Latin text here!"></textarea>
+			<input id="quickApostropheLock" type="checkbox" checked /><label for="quickApostropheLock">Quick Apostrophe Mode</label>
 		</div>
-		<button id="transliterateToArabic">Transliterate Latin to Arabic</button>
-		<input id="transliterationToArabicLock" type="checkbox" /><label for="transliterationToArabicLock">Transliterate to Arabic as I type</label>
-		<br>
-		<button id="transliterateToLatin">Transliterate Arabic to Latin</button>
-		<input id="transliterationToLatinLock" type="checkbox" /><label for="transliterationToLatinLock">Transliterate to Latin as I type</label>
+		<div>
+			<button id="transliterateToArabic">Arabize ⬇️</button>
+			<input id="transliterationToArabicLock" type="checkbox" checked /><label for="transliterationToArabicLock">Transliterate to Arabic as I type</label>
+			<br>
+			<button id="transliterateToLatin">⬆️ Romanize</button>
+			<input id="transliterationToLatinLock" type="checkbox" /><label for="transliterationToLatinLock">Transliterate to Latin as I type</label>
+		
+		</div>
+		<div>
+			<label for="arabicScriptText">Arabic Text:</label>
+			<textarea id="arabicScriptText" name="arabicScriptText" lang="ar" dir="rtl" cols="20" aria-live="assertive" placeholder="اكتُبْ هُنَا"></textarea>
+		</div>
 		<br>
 		<footer><a href="https://github.com/elsanussi-s-mneina/">Elsanussi Mneina made this page. صنع هذه الصفحة السنوسي امنينة </a>
-			<p><a href="https://github.com/elsanussi-s-mneina/h-slash-arabic-romanization-html-js">v0.8.0, (2021-08-20)</a></p>
+			<p><a href="https://github.com/elsanussi-s-mneina/h-slash-arabic-romanization-html-js">v0.9.0, (2021-09-14)</a></p>
 		</footer>
 		
 		<script>
@@ -135,6 +184,11 @@
 				return document.getElementById("transliterationToLatinLock");
 			}
 
+			function getQuickApostropheLock()
+			{
+				return document.getElementById("quickApostropheLock");
+			}
+
 
 
 			getTransliterateToArabicButton().onclick = 
@@ -145,6 +199,12 @@
 
 			function tryArabize()
 			{
+				if (getQuickApostropheLock().checked) 
+				{
+					document.getElementById('latinScriptText').value =
+					apostrophize(document.getElementById('latinScriptText').value);
+				}
+
 				if (getTransliterateToArabicLock().checked)
 				{
 					arabize();
@@ -171,7 +231,9 @@
 
 
 
-
+		// A sentinel separator character
+		// it separates chunks
+		const SEP = "-#2#-";
 
 		const ARABIC_TATWEEL = '\u0640';
 		const ARABIC_SUKUN = '\u0652';
@@ -195,11 +257,26 @@
 		const ARABIC_LETTER_HEH = '\u0647'; 
 		const ARABIC_LETTER_AIN = '\u0639';
 		const ARABIC_LETTER_DAL = '\u062f';
+		const ARABIC_LETTER_THAL = '\u0630';
+		const ARABIC_LETTER_REH = '\u0631'; 
+		const ARABIC_LETTER_ZAIN = '\u0632';
+		const ARABIC_LETTER_SEEN = '\u0633';
+		const ARABIC_LETTER_SAD = '\u0635';
+		const ARABIC_LETTER_DAD = '\u0636';
+		const ARABIC_LETTER_TAH = '\u0637';
+		const ARABIC_LETTER_ZAH = '\u0638';
+		const ARABIC_LETTER_LAM = '\u0644';
+		const ARABIC_LETTER_NOON = '\u0646';
+		
 		const ARABIC_LETTER_SUPERSCRIPT_ALEF = '\u0670';
 		const ARABIC_LETTER_ALEF_MAKSURA = '\u0649';
 		const ARABIC_SUBSCRIPT_ALEF = '\u0656';
 		const ARABIC_SMALL_HIGH_ROUNDED_ZERO = '\u06df';
-
+		const ARABIC_LETTER_JEEM = '\u062c';
+		const ARABIC_LETTER_GHAIN = '\u063a';
+		const ARABIC_LETTER_SHEEN = '\u0634';
+		const ARABIC_LETTER_TEH = '\u062a'
+		const ARABIC_LETTER_THEH = '\u062b';
 		// pre-romanization exclusion characters are arabic characters that must be deleted before
 		// romanization is started. They have no use in the Latin script.
 		
@@ -214,138 +291,164 @@
 			ARABIC_MADDAH_ABOVE
 			];
 
+		// How to recognize doubled graphs without overparsing.
+		function double(text) {
+			return text + SEP + text + SEP;
+		}
+
 		const transliterationTable = 
 			[
-			["-q'q'i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_SHADDA + ARABIC_KASRA]
-			,["-q'i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_KASRA]
-			,["-q'q'i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_SHADDA]
-			,["-q'i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW]
-			,["-q'aa", ARABIC_LETTER_ALEF_WITH_MADDA_ABOVE]
-			,["-q'q'", ARABIC_LETTER_ALEF_WITH_HAMZA_ABOVE + ARABIC_SHADDA]
-			,["-q'", ARABIC_LETTER_ALEF_WITH_HAMZA_ABOVE]
-			,["-q'q'", ARABIC_LETTER_HAMZA + ARABIC_SHADDA]
-			,["-q'", ARABIC_LETTER_HAMZA]
-			,["q'q'", ARABIC_LETTER_WAW_WITH_HAMZA_ABOVE + ARABIC_SHADDA]
-			,["q'", ARABIC_LETTER_WAW_WITH_HAMZA_ABOVE]
-			,["q'q'", ARABIC_LETTER_YEH_WITH_HAMZA_ABOVE + ARABIC_SHADDA]
-			,["q'", ARABIC_LETTER_YEH_WITH_HAMZA_ABOVE]
-			,["--", ARABIC_LETTER_ALEF_WASLA]
+			[SEP + " " + SEP + "ax-x" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_SHEEN + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "at-t" , " " +  ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_TEH + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "at'-t'" , " " +  ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_THEH + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "ad-d" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_DAL + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "ad'-d'" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_THAL + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "ar-r" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_REH + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "aż-ż" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_ZAIN + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "as-s" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_SEEN + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "asħ-sħ" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_SAD + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "adħ-dħ" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_DAD + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "atħ-tħ" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_TAH + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "ad'ħ-d'ħ" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_ZAH + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "an-n" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_NOON + ARABIC_SHADDA]
+			,[SEP + " " + SEP + "al-l" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_LAM + ARABIC_SHADDA]
 
-			,["hħhħ", ARABIC_LETTER_HAH + ARABIC_SHADDA]
+			,["-" + SEP + "q'" + SEP + "q'i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_SHADDA + ARABIC_KASRA]
+			,["-" + SEP + "q'" + SEP + "i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_KASRA]
+			,["-" + SEP + "q'" + SEP + "q'" + SEP + "i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_SHADDA]
+			,["-" + SEP + "q'" + SEP + "i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW]
+			,["-" + SEP + "q'" + SEP + "a" + SEP +  "a", ARABIC_LETTER_ALEF_WITH_MADDA_ABOVE]
+			,["-" + SEP + "q'" + SEP + "q'", ARABIC_LETTER_ALEF_WITH_HAMZA_ABOVE + ARABIC_SHADDA]
+			,["-" + SEP + "q'", ARABIC_LETTER_ALEF_WITH_HAMZA_ABOVE]
+			,["-" + SEP + "q'" + SEP + "q'", ARABIC_LETTER_HAMZA + ARABIC_SHADDA]
+			,["-" + SEP + "q'", ARABIC_LETTER_HAMZA]
+			,["q'" + SEP + "q'", ARABIC_LETTER_WAW_WITH_HAMZA_ABOVE + ARABIC_SHADDA]
+			,["q'", ARABIC_LETTER_WAW_WITH_HAMZA_ABOVE]
+			,["j'" + SEP + "j'", ARABIC_LETTER_YEH_WITH_HAMZA_ABOVE + ARABIC_SHADDA]
+			,["j'", ARABIC_LETTER_YEH_WITH_HAMZA_ABOVE]
+			,["-" + SEP + "-", ARABIC_LETTER_ALEF_WASLA]
+
+
+
+			,["hħ" + SEP + "hħ", ARABIC_LETTER_HAH + ARABIC_SHADDA]
 			,["hħ", ARABIC_LETTER_HAH]
 
+			,[double("h"), ARABIC_LETTER_HEH + ARABIC_SHADDA] 
 			,["h", ARABIC_LETTER_HEH] 
 
-			,["għgħ", ARABIC_LETTER_AIN + ARABIC_SHADDA]
+			,[double("għ"), ARABIC_LETTER_AIN + ARABIC_SHADDA]
 			,["għ", ARABIC_LETTER_AIN]
-			,["aai", ARABIC_FATHA + ARABIC_LETTER_ALEF + ARABIC_LETTER_YEH + ARABIC_SUKUN]
-			,["aa", ARABIC_FATHA + ARABIC_LETTER_ALEF]
-			,["aa", ARABIC_FATHA + ARABIC_LETTER_SUPERSCRIPT_ALEF]
-			,["aa", ARABIC_LETTER_SUPERSCRIPT_ALEF]
-			,["aa", ARABIC_LETTER_ALEF]
-			,["ee", ARABIC_FATHA + ARABIC_LETTER_ALEF_MAKSURA]
-			,["ee", ARABIC_LETTER_ALEF_MAKSURA]
-			,["ai", ARABIC_FATHA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
-			,["ii", ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
-			,["ii", ARABIC_KASRA + ARABIC_SUBSCRIPT_ALEF]
-			,["ii", ARABIC_SUBSCRIPT_ALEF]
-			,["uu", ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
-			,["uu-", ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN + ARABIC_LETTER_ALEF + ARABIC_SMALL_HIGH_ROUNDED_ZERO]
- 			,["uu-", ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_LETTER_ALEF + ARABIC_SMALL_HIGH_ROUNDED_ZERO]
+			,["a" + SEP + "a" + SEP + "i", ARABIC_FATHA + ARABIC_LETTER_ALEF + ARABIC_LETTER_YEH + ARABIC_SUKUN]
+			,["a" + SEP + "a", ARABIC_FATHA + ARABIC_LETTER_ALEF]
+			,["a" + SEP + "a", ARABIC_FATHA + ARABIC_LETTER_SUPERSCRIPT_ALEF]
+			,["a" + SEP + "a", ARABIC_LETTER_SUPERSCRIPT_ALEF]
+			,["a" + SEP + "a", ARABIC_LETTER_ALEF]
+			,["a" + SEP + "e", ARABIC_FATHA + ARABIC_LETTER_ALEF_MAKSURA]
+			,["e" + SEP + "e", ARABIC_LETTER_ALEF_MAKSURA]
+			,["a" + SEP + "i", ARABIC_FATHA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
+			,["i" + SEP + "i", ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
+			,["i" + SEP + "i", ARABIC_KASRA + ARABIC_SUBSCRIPT_ALEF]
+			,["i" + SEP + "" + SEP + "i", ARABIC_SUBSCRIPT_ALEF]
+			,["u" + SEP + "u", ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
+			,["u" + SEP + "u" + SEP + "-", ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN + ARABIC_LETTER_ALEF + ARABIC_SMALL_HIGH_ROUNDED_ZERO]
+ 			,["u" + SEP + "u" + SEP + "-", ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_LETTER_ALEF + ARABIC_SMALL_HIGH_ROUNDED_ZERO]
 
 
-			,["bb", '\u0628' + ARABIC_SHADDA] // ARABIC LETTER BEH then SHADDA
+			,[double("b"), '\u0628' + ARABIC_SHADDA] // ARABIC LETTER BEH then SHADDA
 			,["b", '\u0628'] // ARABIC LETTER BEH
-			,["-tt", '\u0629' + ARABIC_SHADDA] // ARABIC LETTER TEH MARBUTA then SHADDA (this never happens in Standard Arabic but we support it for consistency sake, and because there is no logical reason it should not be possible.)
-			,["-t", '\u0629'] // ARABIC LETTER TEH MARBUTA
-			,["tħtħ", '\u0637' + ARABIC_SHADDA] // ARABIC LETTER TAH then ARABIC SHADDA
+			,["-" + SEP + "t" + SEP + "t", '\u0629' + ARABIC_SHADDA] // ARABIC LETTER TEH MARBUTA then SHADDA (this never happens in Standard Arabic but we support it for consistency sake, and because there is no logical reason it should not be possible.)
+			,["-" + SEP + "t", '\u0629'] // ARABIC LETTER TEH MARBUTA
+			,[double("tħ"), '\u0637' + ARABIC_SHADDA] // ARABIC LETTER TAH then ARABIC SHADDA
 			,["tħ", '\u0637'] // ARABIC LETTER TAH
-			,["t't'", '\u062b' + ARABIC_SHADDA] // ARABIC LETTER THEH then SHADDA
+			,["t'" + SEP + "t'", '\u062b' + ARABIC_SHADDA] // ARABIC LETTER THEH then SHADDA
 			,["t'", '\u062b'] // ARABIC LETTER THEH
-			,["tt", '\u062a' + ARABIC_SHADDA] // ARABIC LETTER TEH then ARABIC SHADDA
-			,["t", '\u062a'] // ARABIC LETTER TEH
-			,["ġħġħ", '\u063a' + ARABIC_SHADDA] // ARABIC LETTER GHAIN then ARABIC SHADDA
-			,["ġħ", '\u063a'] // ARABIC LETTER GHAIN
-			,["ġġ", '\u062c' + ARABIC_SHADDA] // ARABIC LETTER JEEM then ARABIC SHADDA
-			,["ġ", '\u062c'] // ARABIC LETTER JEEM
-			,["hħhħ", ARABIC_LETTER_HAH + ARABIC_SHADDA]
+			,["t" + SEP + "t", ARABIC_LETTER_TEH + ARABIC_SHADDA] // ARABIC LETTER TEH then ARABIC SHADDA
+			,["t", ARABIC_LETTER_TEH] // ARABIC LETTER TEH
+			,["ġ" + SEP + "ġħ", ARABIC_LETTER_JEEM + ARABIC_LETTER_GHAIN]
+			,[double("ġħ"), ARABIC_LETTER_GHAIN + ARABIC_SHADDA] // ARABIC LETTER GHAIN then ARABIC SHADDA
+			,["ġħ", ARABIC_LETTER_GHAIN] 
+			,[double("ġ"), ARABIC_LETTER_JEEM + ARABIC_SHADDA] // ARABIC LETTER JEEM then ARABIC SHADDA
+			,["ġ", ARABIC_LETTER_JEEM]
+			,[double("hħ"), ARABIC_LETTER_HAH + ARABIC_SHADDA]
 			,["hħ", ARABIC_LETTER_HAH]
-			,["jħjħ", '\u062e' + ARABIC_SHADDA] // ARABIC LETTER KHAH then ARABIC SHADDA
+			,[double("jħ"), '\u062e' + ARABIC_SHADDA] // ARABIC LETTER KHAH then ARABIC SHADDA
 			,["jħ", '\u062e'] // ARABIC LETTER KHAH
-			,["d'ħd'ħ", '\u0638' + ARABIC_SHADDA] // ARABIC LETTER ZAH then ARABIC SHADDA
+			,[double("d'ħ"), '\u0638' + ARABIC_SHADDA] // ARABIC LETTER ZAH then ARABIC SHADDA
 			,["d'ħ", '\u0638'] // ARABIC LETTER ZAH
-			,["d'd'", '\u0630' + ARABIC_SHADDA] // ARABIC LETTER DHAL then ARABIC SHADDA
+			,[double("d'"), '\u0630' + ARABIC_SHADDA] // ARABIC LETTER DHAL then ARABIC SHADDA
 			,["d'", '\u0630'] // ARABIC LETTER DHAL
-			,["dħdħ", '\u0636' + ARABIC_SHADDA] // ARABIC LETTER DAD then ARABIC SHADDA
+			,[double("dħ"), '\u0636' + ARABIC_SHADDA] // ARABIC LETTER DAD then ARABIC SHADDA
 			,["dħ", '\u0636'] // ARABIC LETTER DAD
-			,["dd", ARABIC_LETTER_DAL + ARABIC_SHADDA] // ARABIC LETTER DAL then ARABIC SHADDA
+			,[double("d"), ARABIC_LETTER_DAL + ARABIC_SHADDA] // ARABIC LETTER DAL then ARABIC SHADDA
 			,["d", ARABIC_LETTER_DAL] // ARABIC LETTER DAL
-			,["rr", '\u0631' + ARABIC_SHADDA] // ARABIC LETTER REH then ARABIC SHADDA
+			,[double("r"), '\u0631' + ARABIC_SHADDA] // ARABIC LETTER REH then ARABIC SHADDA
 			,["r", '\u0631'] // ARABIC LETTER REH
-			,["żż", '\u0632' + ARABIC_SHADDA] // ARABIC LETTER ZAIN then ARABIC SHADDA
+			,[double("ż"), '\u0632' + ARABIC_SHADDA] // ARABIC LETTER ZAIN then ARABIC SHADDA
 			,["ż", '\u0632'] // ARABIC LETTER ZAIN
-			,["xx", '\u0634' + ARABIC_SHADDA] // ARABIC LETTER SHEEN then ARABIC SHADDA
-			,["x", '\u0634'] // ARABIC LETTER SHEEN
-			,["sħsħ", '\u0635' + ARABIC_SHADDA] // ARABIC LETTER SAD then ARABIC SHADDA
+			,[double("x"), ARABIC_LETTER_SHEEN + ARABIC_SHADDA] // ARABIC LETTER SHEEN then ARABIC SHADDA
+			,["x", ARABIC_LETTER_SHEEN] // ARABIC LETTER SHEEN
+			,[double("sħ"), '\u0635' + ARABIC_SHADDA] // ARABIC LETTER SAD then ARABIC SHADDA
 			,["sħ", '\u0635'] // ARABIC LETTER SAD
-			,["ss", '\u0633' + ARABIC_SHADDA] // ARABIC LETTER SEEN then ARABIC SHADDA
+			,[double("s"), '\u0633' + ARABIC_SHADDA] // ARABIC LETTER SEEN then ARABIC SHADDA
 			,["s", '\u0633'] // ARABIC LETTER SEEN
-			,["ff", '\u0641' + ARABIC_SHADDA] // ARABIC LETTER FEH then ARABIC SHADDA
+			,[double("f"), '\u0641' + ARABIC_SHADDA] // ARABIC LETTER FEH then ARABIC SHADDA
 			,["f", '\u0641'] // ARABIC LETTER FEH
-			,["qħqħ", '\u0642' + ARABIC_SHADDA] // ARABIC LETTER QAF then ARABIC SHADDA
-			,["qħ", '\u0642'] // ARABIC LETTER QAF
-			,["kk", '\u0643' + ARABIC_SHADDA] // ARABIC LETTER KAF then ARABIC SHADDA
+			,[double("q"), '\u0642' + ARABIC_SHADDA] // ARABIC LETTER QAF then ARABIC SHADDA
+			,["q", '\u0642'] // ARABIC LETTER QAF
+			,[double("k"), '\u0643' + ARABIC_SHADDA] // ARABIC LETTER KAF then ARABIC SHADDA
 			,["k", '\u0643'] // ARABIC LETTER KAF
-			,["ll", '\u0644' + ARABIC_SHADDA] // ARABIC LETTER LAM then ARABIC SHADDA
-			,["l", '\u0644'] // ARABIC LETTER LAM
-			,["mm", '\u0645' + ARABIC_SHADDA] // ARABIC LETTER MEEM then ARABIC SHADDA
+			,[double("l"), ARABIC_LETTER_LAM + ARABIC_SHADDA] // ARABIC LETTER LAM then ARABIC SHADDA
+			,["l", ARABIC_LETTER_LAM] // ARABIC LETTER LAM
+			,[double("m"), '\u0645' + ARABIC_SHADDA] // ARABIC LETTER MEEM then ARABIC SHADDA
 			,["m", '\u0645'] // ARABIC LETTER MEEM
-			,["nn", '\u0646' + ARABIC_SHADDA] // ARABIC LETTER NOON then ARABIC SHADDA
+			,[double("n"), '\u0646' + ARABIC_SHADDA] // ARABIC LETTER NOON then ARABIC SHADDA
 			,["n", '\u0646'] // ARABIC LETTER NOON
-			,["hh", ARABIC_LETTER_HEH + ARABIC_SHADDA]
+			,[double("h"), ARABIC_LETTER_HEH + ARABIC_SHADDA]
 			,["h", ARABIC_LETTER_HEH]
-			,["ww", ARABIC_LETTER_WAW + ARABIC_SHADDA]
+			,[double("w"), ARABIC_LETTER_WAW + ARABIC_SHADDA]
 			,["w", ARABIC_LETTER_WAW]
-			,["jj", ARABIC_LETTER_YEH + ARABIC_SHADDA]
+			,[double("j"), ARABIC_LETTER_YEH + ARABIC_SHADDA]
 			,["j", ARABIC_LETTER_YEH]
-			,["a-n", ARABIC_FATHATAN]
-			,["u-n", '\u064c'] // ARABIC DAMMATAN
-			,["i-n", '\u064d'] // ARABIC KASRATAN
+			,["a" + SEP + "-" + SEP + "n", ARABIC_FATHATAN]
+			,["u" + SEP + "-" + SEP + "n", '\u064c'] // ARABIC DAMMATAN
+			,["i" + SEP + "-" + SEP + "n", '\u064d'] // ARABIC KASRATAN
 			
 
 			// prevent long vowel from occurring without a preceding ARABIC LETTER ALEF.
-			,["\raa", '\r' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
-			,["\ruu", '\r' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
-			,["\rii", '\r' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
+			,["\r" + SEP + "a" + SEP + "a", '\r' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
+			,["\r" + SEP + "u" + SEP + "u", '\r' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
+			,["\r" + SEP + "i" + SEP + "i", '\r' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
 			
-			,["\naa", '\n' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
-			,["\nuu", '\n' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
-			,["\nii", '\n' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
+			,["\n" + SEP + "a" + SEP + "a", '\n' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
+			,["\n" + SEP + "u" + SEP + "u", '\n' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
+			,["\n" + SEP + "i" + SEP + "i", '\n' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
 			
-			,["\taa", '\t' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
-			,["\tuu", '\t' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
-			,["\tii", '\t' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
+			,["\t" + SEP + "a" + SEP + "a", '\t' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
+			,["\t" + SEP + "u" + SEP + "u", '\t' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
+			,["\t" + SEP + "i" + SEP + "i", '\t' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
 
-			,[" aa", ' ' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
-			,[" uu", ' ' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
-			,[" ii", ' ' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
+			,[" a" + SEP + "a", ' ' + ARABIC_LETTER_ALEF + ARABIC_FATHA + ARABIC_LETTER_ALEF]
+			,[" u" + SEP + "u", ' ' + ARABIC_LETTER_ALEF + ARABIC_DAMMA + ARABIC_LETTER_WAW + ARABIC_SUKUN]
+			,[" i" + SEP + "i", ' ' + ARABIC_LETTER_ALEF + ARABIC_KASRA + ARABIC_LETTER_YEH + ARABIC_SUKUN]
 			
 			// prevent short vowel from occurring without a preceding ARABIC LETTER ALEF.
-			,["\ra", '\r' + ARABIC_LETTER_ALEF + ARABIC_FATHA]
-			,["\ru", '\r' + ARABIC_LETTER_ALEF + ARABIC_DAMMA]
-			,["\ri", '\r' + ARABIC_LETTER_ALEF + ARABIC_KASRA]
+			,["\r" + SEP + "a", '\r' + ARABIC_LETTER_ALEF + ARABIC_FATHA]
+			,["\r" + SEP + "u", '\r' + ARABIC_LETTER_ALEF + ARABIC_DAMMA]
+			,["\r" + SEP + "i", '\r' + ARABIC_LETTER_ALEF + ARABIC_KASRA]
 			
-			,["\na", '\n' + ARABIC_LETTER_ALEF + ARABIC_FATHA]
-			,["\nu", '\n' + ARABIC_LETTER_ALEF + ARABIC_DAMMA]
-			,["\ni", '\n' + ARABIC_LETTER_ALEF + ARABIC_KASRA]
+			,["\n" + SEP + "a", '\n' + ARABIC_LETTER_ALEF + ARABIC_FATHA]
+			,["\n" + SEP + "u", '\n' + ARABIC_LETTER_ALEF + ARABIC_DAMMA]
+			,["\n" + SEP + "i", '\n' + ARABIC_LETTER_ALEF + ARABIC_KASRA]
 			
-			,["\ta", '\t' + ARABIC_LETTER_ALEF + ARABIC_FATHA] // ARABIC LETTER ALEF then ARABIC FATHA
-			,["\tu", '\t' + ARABIC_LETTER_ALEF + ARABIC_DAMMA] // ARABIC LETTER ALEF then ARABIC DAMMA
-			,["\ti", '\t' + ARABIC_LETTER_ALEF + ARABIC_KASRA] // ARABIC LETTER ALEF then ARABIC KASRA
+			,["\t" + SEP + "a", '\t' + ARABIC_LETTER_ALEF + ARABIC_FATHA] // ARABIC LETTER ALEF then ARABIC FATHA
+			,["\t" + SEP + "u", '\t' + ARABIC_LETTER_ALEF + ARABIC_DAMMA] // ARABIC LETTER ALEF then ARABIC DAMMA
+			,["\t" + SEP + "i", '\t' + ARABIC_LETTER_ALEF + ARABIC_KASRA] // ARABIC LETTER ALEF then ARABIC KASRA
 
-			,[" a", ' ' + ARABIC_LETTER_ALEF + ARABIC_FATHA]
-			,[" u", ' ' + ARABIC_LETTER_ALEF + ARABIC_DAMMA]
-			,[" i", ' ' + ARABIC_LETTER_ALEF + ARABIC_KASRA]
+			,[" " + SEP + "a", ' ' + ARABIC_LETTER_ALEF + ARABIC_FATHA]
+			,[" " + SEP + "u", ' ' + ARABIC_LETTER_ALEF + ARABIC_DAMMA]
+			,[" " + SEP + "i", ' ' + ARABIC_LETTER_ALEF + ARABIC_KASRA]
+
+
 
 			,["a", ARABIC_FATHA]
 			,["u", ARABIC_DAMMA]
@@ -387,9 +490,22 @@
 			,['\u221b', '\u0606'] // ARABIC-INDIC CUBE ROOT to and from CUBE ROOT
 			,['\u221c', '\u0607'] // ARABIC-INDIC FOURTH ROOT to and from FOURTH ROOT
 
-			];
+
+		];
+
+
+
+
 		const LATIN_COLUMN = 0;
 		const ARABIC_COLUMN = 1;
+
+		function apostrophize(text)
+		{
+			text = text.replaceAll("g'", "ġ")
+			text = text.replaceAll("h'", "ħ")
+			text = text.replaceAll("z'", "ż")
+			return text
+		}
 
 		function setArabicText(text)
 		{
@@ -430,10 +546,67 @@
 			return [arabicText.charAt(0), arabicText.substring(1)];
 		}
 
+		
+		function chunkLatin(text) {
+			let result = null;
+			console.log("chunking", text);
+			if (text[2] === "ħ" && text[1] === "'"){
+				result = [text.substring(0,3), text.substring(3)];
+			} else if (text[1] === "'") {
+				result = [text.substring(0,2), text.substring(2)];
+			} else if (text[1] === "ħ") {
+				result = [text.substring(0,2), text.substring(2)];
+			} else {
+				if (text[0] === "a" && text[2] === "-" && text[1] === text[3])
+				{
+					// This branch handles "ax-x", "as-s", et cetera.
+					console.log("got here!!!(", text.substring(0,4), ")")
+					result = [text.substring(0,4), text.substring(4)];
+				}
+				else if (text[0] === "a" && text[2] === "ħ" && text[3] === "-" 
+				&& text[1] === text[4] && text[2] === text[5])
+				{
+					// This branch handles "asħ-sħ", "atħ-tħ", and "adħ-dħ"
+					result = [text.substring(0,6), text.substring(6)];
+
+				}
+				else if (text[0] === "a" && text[2] === "'" && text[3] === "ħ" && text[4] === "-" 
+				&& text[1] === text[5] && text[2] === text[6] && text[3] === text[7])
+				{
+					// This branch handles "ad'ħ-ad'ħ", etc.
+					result = [text.substring(0, 8), text.substring(8)];
+				}
+				else
+				{
+					result = [text.substring(0,1), text.substring(1)];
+				}
+			}
+			return result;
+		}
+
+		function chunkAllLatin(text) {
+			let remainingText = text;
+			let resultText = "";
+
+			while (remainingText.length > 0) {
+				[currChunk, rest] = chunkLatin(remainingText);
+				remainingText = rest;
+				resultText += SEP + currChunk;
+				
+				console.log("The while loop")
+				console.log(remainingText);
+			}
+			return resultText + SEP;
+		}
+
 		function arabizeNextChunk(latinText)
 		{
+			console.log("LLatin text is:", latinText)
 			latinText = latinText.toLowerCase();
 			
+			let maxLengthMatchTuple = ["", ""];
+			let matchFound = false;
+
 			for (var i = 0; i < transliterationTable.length; i++)
 			{
 				const arabicChunk = transliterationTable[i][ARABIC_COLUMN];
@@ -441,14 +614,26 @@
 
 				if (latinText.startsWith(latinChunk))
 				{
+					console.log(latinText, latinChunk)
 					// Transliterate the next Latin chunk.
 					// Also return the rest of the Latin text.
-					return [arabicChunk, latinText.substring(latinChunk.length)];
+					if (maxLengthMatchTuple[0].length < arabicChunk.length)
+					{
+						console.log("candidate translit for chunk: arabicChunk:", arabicChunk, "to ", latinChunk)
+						matchFound = true;
+						maxLengthMatchTuple = [arabicChunk, latinText.substring(latinChunk.length)];
+					}
 				}
 			}
-
+			if (matchFound)
+			{
+				console.log("final choice for chunk:", maxLengthMatchTuple)
+				return maxLengthMatchTuple;
+			} else
+			{
 			// return the next character as is, and everything else
-			return [latinText.charAt(0), latinText.substring(1)];
+				return [latinText.charAt(0), latinText.substring(1)];
+			}
 		}
 
 		function romanizationPreprocessing(text)
@@ -476,6 +661,10 @@
 			// Replace word initial alef with ALEF WASLA.
 			const wordInitialAlef =  /( |\t|\n|\r)\u0627/g;
 			text = text.replaceAll(wordInitialAlef, '$1' + ARABIC_LETTER_ALEF_WASLA);
+			text = text.replaceAll(SEP, "");
+			text = text.replaceAll("#2#-", "");
+
+
 			console.log(text);
 			return text;
 		}
@@ -503,8 +692,11 @@
 			// because the romanization algorithm needs it.
 			// Otherwise it might not add the necessary alef at
 			// the beginning when the text begins with a vowel.
-			latinText = " " + latinText;
+			latinText = "  " + latinText;
+
 			
+			latinText = chunkAllLatin(latinText);
+
 			while (latinText.length > 0)
 			{
 				var chunk = arabizeNextChunk(latinText);
@@ -514,7 +706,11 @@
 			
 			// Remove the extra space we needed.
 			arabicText = arabicText.substring(1);
-			return arabicText;
+
+			// Remove all the chunk separators
+			arabicText = arabicText.replaceAll("-#٢#-", "");
+			arabicText = arabicText.replaceAll("#٢#-", "");
+			return  arabicText
 		}
 
 		function romanize()

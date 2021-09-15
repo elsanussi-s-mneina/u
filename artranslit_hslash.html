@@ -122,6 +122,16 @@
 			<li><span class="latin">bu-n</span> → <span class="arabic">بٌ</span></li>
 			<li><span class="latin">ba-t</span> → <span class="arabic">بَة</span></li>
 		</ul>
+		<h3>overrides (useful when you don't write vowels, or need to write hamza)</h3>
+		<ul class="translitLegend">
+			<li><span class="latin">q'0</span> → <span class="arabic">ا</span></li>
+			<li><span class="latin">q'00</span> → <span class="arabic">ٱ</span></li>
+			<li><span class="latin">q'1</span> → <span class="arabic">أ</span></li>
+			<li><span class="latin">q'2</span> → <span class="arabic">إ</span></li>
+			<li><span class="latin">q'3</span> → <span class="arabic">آ</span></li>
+			<li><span class="latin">q'4</span> → <span class="arabic">ؤ</span></li>
+			<li><span class="latin">q'5</span> → <span class="arabic">ئ</span></li>
+		</ul>
 
 		<h2>Try it</h2>
 		<div>
@@ -148,7 +158,7 @@
 		</div>
 		<br>
 		<footer><a href="https://github.com/elsanussi-s-mneina/">Elsanussi Mneina made this page. صنع هذه الصفحة السنوسي امنينة </a>
-			<p><a href="https://github.com/elsanussi-s-mneina/h-slash-arabic-romanization-html-js">v0.9.0, (2021-09-14)</a></p>
+			<p><a href="https://github.com/elsanussi-s-mneina/h-slash-arabic-romanization-html-js">v1.0.0, (2021-09-14)</a></p>
 		</footer>
 		
 		<script>
@@ -298,7 +308,8 @@
 
 		const transliterationTable = 
 			[
-			[SEP + " " + SEP + "ax-x" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_SHEEN + ARABIC_SHADDA]
+			[SEP + " " + SEP + "al-" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM]
+			,[SEP + " " + SEP + "ax-x" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_SHEEN + ARABIC_SHADDA]
 			,[SEP + " " + SEP + "at-t" , " " +  ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_TEH + ARABIC_SHADDA]
 			,[SEP + " " + SEP + "at'-t'" , " " +  ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_THEH + ARABIC_SHADDA]
 			,[SEP + " " + SEP + "ad-d" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_DAL + ARABIC_SHADDA]
@@ -312,7 +323,13 @@
 			,[SEP + " " + SEP + "ad'ħ-d'ħ" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_ZAH + ARABIC_SHADDA]
 			,[SEP + " " + SEP + "an-n" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_NOON + ARABIC_SHADDA]
 			,[SEP + " " + SEP + "al-l" , " " + ARABIC_LETTER_ALEF_WASLA + ARABIC_LETTER_LAM + ARABIC_LETTER_LAM + ARABIC_SHADDA]
-
+			,["q'00" , ARABIC_LETTER_ALEF_WASLA]
+			,["q'0" , ARABIC_LETTER_ALEF]
+			,["q'1", ARABIC_LETTER_ALEF_WITH_HAMZA_ABOVE]
+			,["q'2" , ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW]
+			,["q'3", ARABIC_LETTER_ALEF_WITH_MADDA_ABOVE]
+			,["q'4", ARABIC_LETTER_WAW_WITH_HAMZA_ABOVE]
+			,["q'5", ARABIC_LETTER_YEH_WITH_HAMZA_ABOVE]
 			,["-" + SEP + "q'" + SEP + "q'i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_SHADDA + ARABIC_KASRA]
 			,["-" + SEP + "q'" + SEP + "i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_KASRA]
 			,["-" + SEP + "q'" + SEP + "q'" + SEP + "i", ARABIC_LETTER_ALEF_WITH_HAMZA_BELOW + ARABIC_SHADDA]
@@ -550,7 +567,14 @@
 		function chunkLatin(text) {
 			let result = null;
 			console.log("chunking", text);
-			if (text[2] === "ħ" && text[1] === "'"){
+			if (text[0] === "q" && text[1] === "'" && text[2] === "0" && text[3] === "0") {
+				result = [text.substring(0,4), text.substring(4)];
+			} else if (text[0] === "q" && text[1] === "'" && 
+			   (text[2] === "0" || text[2] === "1" || text[2] === "2" || text[2] == "3" ||
+			   text[2] === "4" || text[2] === "5" || text[2] == "6" ||
+			   text[2] === "7" || text[2] === "8" || text[2] == "9")) {
+				result = [text.substring(0,3), text.substring(3)];
+			} else if (text[2] === "ħ" && text[1] === "'"){
 				result = [text.substring(0,3), text.substring(3)];
 			} else if (text[1] === "'") {
 				result = [text.substring(0,2), text.substring(2)];
@@ -575,6 +599,9 @@
 				{
 					// This branch handles "ad'ħ-ad'ħ", etc.
 					result = [text.substring(0, 8), text.substring(8)];
+				} else if (text[0] === "a" && text[1] === "l" && text[2] === "-") {
+					// This branch handles the moon letters, i.e. "al-"
+					result = [text.substring(0, 3), text.substring(3)];
 				}
 				else
 				{

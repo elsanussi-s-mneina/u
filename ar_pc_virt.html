@@ -105,7 +105,7 @@
 		<footer>
 			Created by <a href="https://github.com/elsanussi-s-mneina">Elsanussi Mneina</a><br>
 			Last updated on 2021-06-01<br>
-			<a href="https://github.com/elsanussi-s-mneina/arabic_pc_virtual_keyboard_in_html_javascript">v0.8.4</a>
+			<a href="https://github.com/elsanussi-s-mneina/arabic_pc_virtual_keyboard_in_html_javascript">v0.8.5</a>
 		</footer>
 
 		<script>
@@ -516,6 +516,15 @@ function onKeyDown(e)
 	else if (e.code == "Backspace")
 	{
 		deleteFinalCharacter();
+	}
+
+	if (e.keyCode == 32) // space
+	{
+		// prevent space bar from scrolling page.
+		e.preventDefault();
+
+		// put whitespace
+		printToOutput(" ");
 	}
 
 	console.log("onKeyDown:");

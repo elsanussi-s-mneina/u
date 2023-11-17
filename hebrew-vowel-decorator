@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hebrew Vowel Decorator</title>
+  <style>
+	.keyboardButton {
+		font-size: 3em;
+		padding: 0.5em;
+		margin: 0.25em 0.3em;
+	}
+  </style>
+</head>
+<body>
+	<h1>Random Vowels and 3 Consonants</h1>
+	<h2>Consonants</h2>
+	<p>Type consonants here without diacritics</p>
+	
+	<textarea id="inputText" dir="rtl" style="width: 85%; font-size: 8em; margin: 0em 1em; padding: 0.2em; line-height: 1.7em;"></textarea>
+	
+	<div id="virtualKeyboard" dir="rtl" style="margin: 2em 3em;">
+		<button class="keyboardButton">
+		א							  
+		</button>
+
+		<button class="keyboardButton">
+		בּ
+		</button>
+		<button class="keyboardButton">
+		ב
+		</button>
+		<button class="keyboardButton">
+		ג
+		</button>
+		<button class="keyboardButton">
+		ד
+		</button>
+		<button class="keyboardButton">
+		ה
+		</button>
+		<button class="keyboardButton">
+		ו
+		</button>
+		<button class="keyboardButton">
+		ז
+		</button>
+		<button class="keyboardButton">
+		ח
+		</button>
+		<button class="keyboardButton">
+		ט
+		</button>
+		<button class="keyboardButton">
+		י
+		</button>
+		<button class="keyboardButton">
+		ּכ
+		</button>
+		<button class="keyboardButton">
+		כ
+		</button>
+		<button class="keyboardButton">
+		ך
+		</button>
+		<button class="keyboardButton">
+		ל
+		</button>
+		<button class="keyboardButton">
+		מ
+		</button>
+		<button class="keyboardButton">
+		נ
+		</button>
+		<button class="keyboardButton">
+		ס
+		</button>
+		<button class="keyboardButton">
+		ע
+		</button>
+		<button class="keyboardButton">
+		פּ
+		</button>
+		<button class="keyboardButton">
+		פ
+		</button>
+		<button class="keyboardButton">
+		ף
+		</button>
+		<button class="keyboardButton">
+		צ
+		</button>
+		<button class="keyboardButton">
+		ק
+		</button>
+		<button class="keyboardButton">
+		ר
+		</button>
+		<button class="keyboardButton">
+		שׁ
+		</button>
+		<button class="keyboardButton">
+		שׂ
+		</button>
+		<button class="keyboardButton">
+		ת
+		</button>
+		<button class="keyboardButton">
+		תּ
+		</button>
+	</div>
+	
+	<h2>Same Consonants but with Vowels</h2>
+	<p>Press the generate button to calculate the resulting text.</p>
+	<button id="generateButton" style="display: block; font-size: 3em; margin: 0.2em 20%;
+    padding: 0.2em;">Generate</button>
+	<textarea id="outputText" dir="rtl" style="width:85%; font-size:8em; margin: 0em 1em; padding: 0.2em; line-height: 1.7em;"></textarea>
+	<script>
+		let kButtons = document.getElementsByClassName("keyboardButton");
+		// Set up virtual keyboard buttons
+		for (let i = 0; i < kButtons.length; i++)
+		{
+			kButtons[i].addEventListener("click", () => document.getElementById("inputText").value += kButtons[i].innerText);
+		}
+
+		
+		function addText() {
+			let outputText = document.getElementById("outputText");
+			
+			outputText.value = "abc";
+		}
+		
+
+		function addTextFromInput() {
+			let outputText = document.getElementById("outputText");
+			let inputText = document.getElementById("inputText");
+			
+			outputText.value = inputText.value;
+		}
+		
+		function intersperse(textInBetween, text) {
+			let result = "";
+			for (let i = 0; i < text.length; i++) {
+				result += text[i];
+				if (i < text.length - 1) {
+					result += textInBetween;
+				}
+			}
+			
+			return result;
+		}
+
+		function intersperseInOrder(textsInBetween, text) {
+			text = text.trim();
+			let result = "";
+			for (let i = 0; i < text.length; i++) {
+				result += text[i];
+				if (i < text.length - 1) {
+					result += textsInBetween[i % textsInBetween.length];
+				}
+			}
+			
+			return result;
+		}
+
+		function intersperseInRandomOrder(textsInBetween, text) {
+			text = text.trim();
+			let result = "";
+			for (let i = 0; i < text.length; i++) {
+				result += text[i];
+				if (i < text.length - 1) {
+					let inBetweenIndex = Math.floor(Math.random() * textsInBetween.length);
+					result += textsInBetween[inBetweenIndex];
+				}
+			}
+			
+			return result;
+		}
+
+		
+		
+		function addTextFromInputWithVowel(vowel) {
+			let outputText = document.getElementById("outputText");
+			let inputText = document.getElementById("inputText");
+			
+			outputText.value = intersperse(vowel, inputText.value);
+		}
+
+		function addTextFromInputWithVowels(vowels) {
+			let outputText = document.getElementById("outputText");
+			let inputText = document.getElementById("inputText");
+			
+			
+			outputText.value = intersperseInRandomOrder(vowels, inputText.value);
+		}
+
+		function addTextFromInputWithHebrewVowels() {
+			let hebrewVowels = [
+			  "ַ",
+			  "ָ",
+			  "ֵ",
+			  "ֶ",
+			  "ְ",
+			  "ֻ",
+			  "ֹ",
+			  "וֹ"
+			];
+			addTextFromInputWithVowels(hebrewVowels);
+		}
+
+		
+		var generateButton = document.getElementById("generateButton");
+		generateButton.addEventListener("click", () => {
+			// addTextFromInputWithVowel('a');
+			addTextFromInputWithHebrewVowels();
+			
+		});
+	</script>
+</body>
+</html>

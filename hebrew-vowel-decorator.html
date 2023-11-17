@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Hebrew Vowel Decorator</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Random Vowels and 3 Consonants</title>
   <style>
 	.keyboardButton {
 		font-size: 3em;
@@ -26,6 +26,7 @@
 		<button class="keyboardButton">
 		בּ
 		</button>
+
 		<button class="keyboardButton">
 		ב
 		</button>
@@ -95,12 +96,14 @@
 		<button class="keyboardButton">
 		ר
 		</button>
+
 		<button class="keyboardButton">
 		שׁ
 		</button>
 		<button class="keyboardButton">
 		שׂ
 		</button>
+
 		<button class="keyboardButton">
 		ת
 		</button>
@@ -161,21 +164,31 @@
 			
 			return result;
 		}
+		
+		function isDageshOrShinDot(aCharacter) {
+			return aCharacter === 'ּ' ||
+				aCharacter === 'ׂ' ||
+				aCharacter === 'ׁ';
+		}
 
 		function intersperseInRandomOrder(textsInBetween, text) {
 			text = text.trim();
 			let result = "";
 			for (let i = 0; i < text.length; i++) {
-				result += text[i];
 				if (i < text.length - 1) {
-					let inBetweenIndex = Math.floor(Math.random() * textsInBetween.length);
-					result += textsInBetween[inBetweenIndex];
+					result += text[i];					
+					
+					if (!isDageshOrShinDot(text[i + 1])) {						
+						let inBetweenIndex = Math.floor(Math.random() * textsInBetween.length);
+						result += textsInBetween[inBetweenIndex];
+					}
+				} else {
+					result += text[i];
 				}
 			}
 			
 			return result;
 		}
-
 		
 		
 		function addTextFromInputWithVowel(vowel) {
